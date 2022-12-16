@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="client : ${clients}">
+    <p th:text="${client.getFirstname()} + ' ' + ${client.getLastname()} + ' '
+    + ${client.getPatronymic()} +  ' ' + ${client.getPhone()}"></p>
+    <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getEmail()}"></a>
+    <p th:text="${client.getOffer()}"></p>
+</div>
+
+<a href="/client/new" >add new client</a>
+</body>
+</html>
