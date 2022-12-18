@@ -1,18 +1,16 @@
 package whoscared.esoftdemo.esoft.demo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "realtor")
-public class Realtor {
+public class Realtor extends Person{
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotEmpty(message = "Lastname should not be empty")
@@ -22,7 +20,7 @@ public class Realtor {
 
     @NotEmpty(message = "Firstname should not be empty")
     @Max(value = 50, message = "Firstname should not be larger than 50 symbols")
-    @Column(name = "firsname")
+    @Column(name = "firstname")
     private String firstname;
 
     @NotEmpty(message = "Patronymic should not be empty")
@@ -30,7 +28,8 @@ public class Realtor {
     @Column(name = "patronymic")
     private String patronymic;
 
-    @Size(min = 0, max = 100, message = "Share Of Commission must be between 0 and 100")
+    @NotEmpty(message = "Share Of Commission should not be empty")
+    @Size(max = 100, message = "Share Of Commission must be between 0 and 100")
     @Column(name = "share_of_commission")
     private int shareOfCommission;
 

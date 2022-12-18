@@ -1,34 +1,35 @@
 package whoscared.esoftdemo.esoft.demo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.NumberFormat;
 
 
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client extends Person{
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Max(value = 50, message = "Lastname should not be larger than 50 symbols")
+    @Size(min = 1, max = 50)
     @Column(name = "lastname")
     private String lastname;
 
-    @Max(value = 50, message = "Firstname should not be larger than 50 symbols")
-    @Column(name = "firsname")
+    @Size(min = 1, max = 50)
+    @Column(name = "firstname")
     private String firstname;
 
-    @Max(value = 50, message = "Patronymic should not be larger than 50 symbols")
+    @Size(min = 1, max = 50)
     @Column(name = "patronymic")
     private String patronymic;
 
-    @Min(value = 11, message = "Phone number must contain 11 digits")
+
+    //@Min(value = 11, message = "Phone number must contain 11 digits")
     @Column(name = "phone")
     private String phone;
 

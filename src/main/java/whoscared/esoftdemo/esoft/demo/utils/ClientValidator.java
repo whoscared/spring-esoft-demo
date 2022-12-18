@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import whoscared.esoft.esoftdemo.models.Client;
-import whoscared.esoft.esoftdemo.services.ClientService;
+import whoscared.esoftdemo.esoft.demo.models.Client;
+import whoscared.esoftdemo.esoft.demo.services.ClientService;
 
 @Component
 public class ClientValidator implements Validator {

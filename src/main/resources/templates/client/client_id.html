@@ -8,14 +8,6 @@
 <p th:text="${'Full Name: ' + client.getFullName()}">FullName</p>
 <p th:text="${'Age: ' +  client.getAge()}">Age</p>
 
-<p th:if="${books == null}">The user has no books</p>
 
-<div th:if="${books}">
-    <p style="color:darkslategrey" th:text="${'List of ' + user.getFullName() + ' books'}"></p>
-    <div th:each="book : ${books}">
-        <a th:style="${book.getArrears()} ? 'color:red' : 'color:black'"
-           th:href="@{/book/{id}(id=${book.getId()})}" th:text="${book.getName()}"></a>
-    </div>
-</div>
 </body>
 </html>

@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<form th:method="POST" th:action="@{/search}" th:object="${person}">
+    <label for="lastname">Lastname</label>
+    <input type="text" th:field="*{lastname}" id="lastname"/>
+
+    <br/>
+
+    <label for="firstname">Firstname</label>
+    <input type="text" th:field="*{firstname}" id="firstname"/>
+
+    <br/>
+
+    <label for="patronymic">Patronymic</label>
+    <input type="text" th:field="*{patronymic}" id="patronymic"/>
+
+    <input type="submit" value="find!"/>
+</form>
+
+<br/>
+
+<div th:if="${personList}">
+    <div th:if="${personList.isEmpty()}">
+        <p style="color: brown">Person not found</p>
+    </div>
+
+    <div th:if="${!personList.isEmpty()}">
+        <p>persons found for this query</p>
+        <div th:each="person : ${personList}">
+            <p th:text="${person}"></p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

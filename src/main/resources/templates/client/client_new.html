@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<div th:if="${error}">
+    <p style="color: brown">"You must fill in one of the fields: email or number"</p>
+</div>
+
+
+<form th:method="POST" th:action="@{/client}" th:object="${client}">
+
+    <label for="lastname">Lastname</label>
+    <input type="text" th:field="*{lastname}" id="lastname"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">error lastname</div>
+
+    <br/>
+
+    <label for="firstname">Firstname</label>
+    <input type="text" th:field="*{firstname}" id="firstname"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">error firstname</div>
+
+    <br/>
+
+    <label for="patronymic">Patronymic</label>
+    <input type="text" th:field="*{patronymic}" id="patronymic"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}">error patronymic</div>
+
+    <br/>
+
+    <label for="phone">Phone</label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error phone</div>
+
+    <br/>
+
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error email</div>
+
+    <br/>
+
+    <input type="submit" value="Save"/>
+</form>
 </body>
 </html>

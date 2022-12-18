@@ -6,9 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import whoscared.esoft.esoftdemo.models.Client;
-import whoscared.esoft.esoftdemo.services.ClientService;
-
+import whoscared.esoftdemo.esoft.demo.models.Client;
+import whoscared.esoftdemo.esoft.demo.services.ClientService;
 @Controller
 @RequestMapping("/client")
 public class ClientController {
@@ -33,26 +32,26 @@ public class ClientController {
 
     @PostMapping()
     public String addNewClient(@ModelAttribute("client") @Valid Client client,
-                               Model model,
-                               BindingResult bindingResult) {
+                               BindingResult bindingResult,
+                               Model model) {
         if (bindingResult.hasErrors()) {
             return "client/client_new";
         }
-        if (client.getEmail() == null && client.getPhone() == null){
-            model.addAttribute("error", "You must fill in one of the fields: email or number");
+        if (client.getEmail().isEmpty() && client.getPhone().isEmpty()){
+            model.addAttribute("error", true);
             return "client/client_new";
         }
         clientService.save(client);
-        return "redirect:/client";
+        return "redirect:/client/main";
     }
 
-    @GetMapping("/{id}")
-    public String oneClient(@PathVariable("id") long id,
-                            Model model) {
-        model.addAttribute("client", clientService.findById(id));
-        model.addAttribute("offers", clientService.findById(id).getOffer());
-        return "client/client_id";
-    }
+//    @GetMapping("/{id}")
+//    public String oneClient(@PathVariable("id") long id,
+//                            Model model) {
+//        model.addAttribute("client", clientService.findById(id));
+//        model.addAttribute("offers", clientService.findById(id).getOffer());
+//        return "client/client_id";
+//    }
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id,
@@ -72,7 +71,7 @@ public class ClientController {
         return "client/client_id";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping()
     public String delete(@PathVariable("id") long id,
                          Model model) {
         if (clientService.findById(id).getOffer() != null) {

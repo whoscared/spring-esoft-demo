@@ -8,9 +8,10 @@
 
 <div th:each="client : ${clients}">
     <p th:text="${client.getFirstname()} + ' ' + ${client.getLastname()} + ' '
-    + ${client.getPatronymic()} +  ' ' + ${client.getPhone()}"></p>
-    <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getEmail()}"></a>
+    + ${client.getPatronymic()} +  ' ' + ${client.getPhone()} + ' ' + ${client.getEmail()}"></p>
+    <div th:if="${client.getOffer()}">
     <p th:text="${client.getOffer()}"></p>
+    </div>
 </div>
 
 <a href="/client/new" >add new client</a>

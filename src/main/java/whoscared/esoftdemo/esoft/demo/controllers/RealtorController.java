@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import whoscared.esoft.esoftdemo.models.Realtor;
-import whoscared.esoft.esoftdemo.services.RealtorService;
+import whoscared.esoftdemo.esoft.demo.models.Realtor;
+import whoscared.esoftdemo.esoft.demo.services.RealtorService;
 
 @Controller
 @RequestMapping("/realtor")
@@ -41,12 +41,12 @@ public class RealtorController {
         return "redirect:/realtor";
     }
 
-    @GetMapping("/{id}")
-    public String oneRealtor(@PathVariable("id") long id,
-                             Model model) {
-        model.addAttribute("realtor", realtorService.findById(id));
-        return "realtor/realtor_id";
-    }
+//    @GetMapping("/{id}")
+//    public String oneRealtor(@PathVariable("id") long id,
+//                             Model model) {
+//        model.addAttribute("realtor", realtorService.findById(id));
+//        return "realtor/realtor_id";
+//    }
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id,
