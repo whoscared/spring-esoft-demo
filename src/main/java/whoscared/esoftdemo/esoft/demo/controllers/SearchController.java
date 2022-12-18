@@ -23,7 +23,7 @@ public class SearchController {
     @PostMapping()
     public String search(Model model,
                          @ModelAttribute ("person") Person person) {
-    List<String> resultOfSearch = searchClientsAndRealtors.searchPersons(person);
+    List<Person> resultOfSearch = searchClientsAndRealtors.searchPersons(person);
     model.addAttribute("personList", resultOfSearch);
         return "/search/search";
     }

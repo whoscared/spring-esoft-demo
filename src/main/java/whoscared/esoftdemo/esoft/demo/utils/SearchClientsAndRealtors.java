@@ -24,46 +24,57 @@ public class SearchClientsAndRealtors {
         this.realtorService = realtorService;
     }
 
-    public List<String> searchPersons(Person p) {
+    public List<Person> searchPersons(Person p) {
         List<Person> allPersons = new ArrayList<>();
         allPersons.addAll(clientService.allClients());
         allPersons.addAll(realtorService.allRealtors());
-        //List<Client> allClients = clientService.allClients();
-        //List<Realtor> allRealtors = realtorService.allRealtors();
 
-        String personBySearch = p.getFirstname() + " " + p.getLastname() + " " + p.getPatronymic();
-
-        List<String> searchBy = new ArrayList<>(allPersons.stream()
-                .map(x -> {
-                    String s = "";
-                    s += p.getFirstname().isEmpty() ? " " : x.getFirstname() + " ";
-                    s += p.getLastname().isEmpty() ? " " : x.getLastname() + " ";
-                    s += p.getPatronymic().isEmpty() ? " " : x.getPatronymic();
-                    return s;
-                })
-                .map(String::trim)
-                .toList());
-//        searchBy.addAll(allRealtors.stream()
-//                .map(x -> x.getFirstname() + " " + x.getLastname() + " " + x.getPatronymic())
+//        String personBySearch = p.getFirstname() + " " + p.getLastname() + " " + p.getPatronymic();
+//
+//        List<String> searchBy = new ArrayList<>(allPersons.stream()
+//                .map(x -> {
+//                    String s = "";
+//                    s += p.getFirstname().isEmpty() ? " " : x.getFirstname() + " ";
+//                    s += p.getLastname().isEmpty() ? " " : x.getLastname() + " ";
+//                    s += p.getPatronymic().isEmpty() ? " " : x.getPatronymic();
+//                    return s;
+//                })
 //                .map(String::trim)
 //                .toList());
-        searchBy.removeIf(String::isEmpty);
+//
+//        searchBy.removeIf(String::isEmpty);
 
-        List<String> result = searchByString(searchBy, personBySearch.trim());
+        //List<String> result = searchByString(searchBy, personBySearch.trim());
 
-        return searchByString(searchBy, personBySearch.trim());
+        return searchByPerson(allPersons, p);
     }
 
-    private List<String> searchByString(List<String> searchBy, String s) {
-        List<String> result = new ArrayList<>();
-        for (String temp : searchBy){
-            int tempLen = levenshteinDistance(temp, s);
-            if (tempLen <= 3){
+    private List<Person> searchByPerson (List<Person> searchBy, Person person){
+        String personBySearch = person.getFirstname() + " " + person.getLastname() + " " + person.getPatronymic();
+        List<Person> result = new ArrayList<>();
+
+        for (Person temp : searchBy){
+            String temp_person = "";
+            temp_person += person.getFirstname().isEmpty() ? " " : temp.getFirstname() + " ";
+            temp_person += person.getLastname().isEmpty() ? " " : temp.getLastname() + " ";
+            temp_person += person.getPatronymic().isEmpty() ? " " : temp.getPatronymic();
+            if (levenshteinDistance(temp_person.replace(" ",""), personBySearch.replace(" ","")) <= 3){
                 result.add(temp);
             }
         }
         return result;
     }
+
+//    private List<String> searchByString(List<String> searchBy, String s) {
+//        List<String> result = new ArrayList<>();
+//        for (String temp : searchBy) {
+//            int tempLen = levenshteinDistance(temp, s);
+//            if (tempLen <= 3) {
+//                result.add(temp);
+//            }
+//        }
+//        return result;
+//    }
 
     private int levenshteinDistance(String s1, String s2) {
         int[][] matrix = new int[s1.length() + 1][s2.length() + 1];

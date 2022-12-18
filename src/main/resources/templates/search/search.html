@@ -33,7 +33,8 @@
     <div th:if="${!personList.isEmpty()}">
         <p>persons found for this query</p>
         <div th:each="person : ${personList}">
-            <p th:text="${person}"></p>
+            <p th:text="${person.getFirstname()} + ' ' + ${person.getLastname()} + ' '
+    + ${person.getPatronymic()}"></p>
         </div>
     </div>
 </div>
