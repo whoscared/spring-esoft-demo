@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import whoscared.esoftdemo.esoft.demo.models.Realtor;
+import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
 import whoscared.esoftdemo.esoft.demo.services.RealtorService;
 
 @Controller

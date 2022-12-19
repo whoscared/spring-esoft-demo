@@ -2,8 +2,7 @@ package whoscared.esoftdemo.esoft.demo.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import whoscared.esoftdemo.esoft.demo.models.Client;
-import whoscared.esoftdemo.esoft.demo.models.Realtor;
+import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
 
 import java.util.List;
 
@@ -15,5 +14,5 @@ public interface RealtorRepository extends JpaRepository<Realtor, Long> {
 
     List<Realtor> findByPatronymic(String patronymic);
 
-    void deleteById (long id);
+    void deleteById(long id);
 }

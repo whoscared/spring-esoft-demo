@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import whoscared.esoftdemo.esoft.demo.models.Person;
-import whoscared.esoftdemo.esoft.demo.utils.SearchClientsAndRealtors;
+import whoscared.esoftdemo.esoft.demo.models.people.Person;
+import whoscared.esoftdemo.esoft.demo.search.SearchClientsAndRealtors;
 
 import java.util.List;
 
@@ -22,9 +22,9 @@ public class SearchController {
 
     @PostMapping()
     public String search(Model model,
-                         @ModelAttribute ("person") Person person) {
-    List<Person> resultOfSearch = searchClientsAndRealtors.searchPersons(person);
-    model.addAttribute("personList", resultOfSearch);
+                         @ModelAttribute("person") Person person) {
+        List<Person> resultOfSearch = searchClientsAndRealtors.searchPersons(person);
+        model.addAttribute("personList", resultOfSearch);
         return "/search/search";
     }
 

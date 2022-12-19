@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search</title>
 </head>
 <body>
 
@@ -31,7 +31,7 @@
     </div>
 
     <div th:if="${!personList.isEmpty()}">
-        <p>persons found for this query</p>
+        <p>persons found for this query:</p>
         <div th:each="person : ${personList}">
             <p th:text="${person.getFirstname()} + ' ' + ${person.getLastname()} + ' '
     + ${person.getPatronymic()}"></p>

@@ -1,41 +1,39 @@
-package whoscared.esoftdemo.esoft.demo.models;
+package whoscared.esoftdemo.esoft.demo.models.people;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import org.springframework.format.annotation.NumberFormat;
-
+import whoscared.esoftdemo.esoft.demo.models.Offer;
+import whoscared.esoftdemo.esoft.demo.models.people.Person;
 
 @Entity
-@Table(name = "client")
-public class Client extends Person{
+@Table(name = "realtor")
+public class Realtor extends Person {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Size(min = 1, max = 50)
+    @NotEmpty(message = "Lastname should not be empty")
+    @Max(value = 50, message = "Lastname should not be larger than 50 symbols")
     @Column(name = "lastname")
     private String lastname;
 
-    @Size(min = 1, max = 50)
+    @NotEmpty(message = "Firstname should not be empty")
+    @Max(value = 50, message = "Firstname should not be larger than 50 symbols")
     @Column(name = "firstname")
     private String firstname;
 
-    @Size(min = 1, max = 50)
+    @NotEmpty(message = "Patronymic should not be empty")
+    @Max(value = 50, message = "Patronymic should not be larger than 50 symbols")
     @Column(name = "patronymic")
     private String patronymic;
 
-
-    //@Min(value = 11, message = "Phone number must contain 11 digits")
-    @Column(name = "phone")
-    private String phone;
-
-    @Email(message = "Email introduced not correct")
-    @Column(name = "email")
-    private String email;
+    @NotEmpty(message = "Share Of Commission should not be empty")
+    @Size(max = 100, message = "Share Of Commission must be between 0 and 100")
+    @Column(name = "share_of_commission")
+    private int shareOfCommission;
 
     @Column(name = "offer")
     private Offer offer;
@@ -72,20 +70,12 @@ public class Client extends Person{
         this.patronymic = patronymic;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getShareOfCommission() {
+        return shareOfCommission;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setShareOfCommission(int shareOfCommission) {
+        this.shareOfCommission = shareOfCommission;
     }
 
     public Offer getOffer() {

@@ -1,37 +1,37 @@
-package whoscared.esoftdemo.esoft.demo.models;
+package whoscared.esoftdemo.esoft.demo.models.people;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
+
 
 @Entity
-@Table(name = "realtor")
-public class Realtor extends Person{
+@Table(name = "client")
+public class Client extends Person {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "Lastname should not be empty")
-    @Max(value = 50, message = "Lastname should not be larger than 50 symbols")
+    @Size(min = 1, max = 50)
     @Column(name = "lastname")
     private String lastname;
 
-    @NotEmpty(message = "Firstname should not be empty")
-    @Max(value = 50, message = "Firstname should not be larger than 50 symbols")
+    @Size(min = 1, max = 50)
     @Column(name = "firstname")
     private String firstname;
 
-    @NotEmpty(message = "Patronymic should not be empty")
-    @Max(value = 50, message = "Patronymic should not be larger than 50 symbols")
+    @Size(min = 1, max = 50)
     @Column(name = "patronymic")
     private String patronymic;
 
-    @NotEmpty(message = "Share Of Commission should not be empty")
-    @Size(max = 100, message = "Share Of Commission must be between 0 and 100")
-    @Column(name = "share_of_commission")
-    private int shareOfCommission;
+    @Column(name = "phone")
+    private String phone;
+
+    @Email(message = "Email introduced not correct or user with this email already exist")
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "offer")
     private Offer offer;
@@ -68,12 +68,20 @@ public class Realtor extends Person{
         this.patronymic = patronymic;
     }
 
-    public int getShareOfCommission() {
-        return shareOfCommission;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setShareOfCommission(int shareOfCommission) {
-        this.shareOfCommission = shareOfCommission;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Offer getOffer() {

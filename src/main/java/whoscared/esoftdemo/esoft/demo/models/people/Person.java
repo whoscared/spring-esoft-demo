@@ -1,4 +1,4 @@
-package whoscared.esoftdemo.esoft.demo.models;
+package whoscared.esoftdemo.esoft.demo.models.people;
 
 public class Person {
     private String firstname;

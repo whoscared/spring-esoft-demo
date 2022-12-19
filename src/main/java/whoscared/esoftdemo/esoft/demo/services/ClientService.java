@@ -2,7 +2,7 @@ package whoscared.esoftdemo.esoft.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import whoscared.esoftdemo.esoft.demo.models.Client;
+import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.repositories.ClientRepository;
 
 import java.util.List;
@@ -24,15 +24,15 @@ public class ClientService {
         return clientRepository.findByEmail(email).orElse(null);
     }
 
-    public List<Client> findByFirstname (String firstname){
+    public List<Client> findByFirstname(String firstname) {
         return clientRepository.findByFirstname(firstname);
     }
 
-    public List<Client> findByLastName (String lastname){
+    public List<Client> findByLastName(String lastname) {
         return clientRepository.findByLastname(lastname);
     }
 
-    public List<Client> findByPatronymic (String patronymic) {
+    public List<Client> findByPatronymic(String patronymic) {
         return clientRepository.findByPatronymic(patronymic);
     }
 
