@@ -3,40 +3,38 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @Table(name = "house")
 public class House extends RealEstate {
+    @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "floor")
-    private int floor;
+    @Column(name = "city")
+    private String city;
 
-    @Column(name = "rooms")
-    private int rooms;
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "house")
+    private String house;
+
+    @Column(name = "apartmentNumber")
+    private String apartmentNumber;
+    @Column(name = "latitude")
+    private int latitude;
+    @Column(name = "latitude")
+    private int longitude;
+
+    @Column(name = "countOfFloors")
+    private int countOfFloors;
+
+    @Column(name = "countOfRooms")
+    private int countOfRooms;
     @Column(name = "area")
     private int area;
 
-    private final TypeOfRealEstate typeOfRealEstate = TypeOfRealEstate.HOUSE;
-
     public House() {
-    }
-
-    public int getFloor() {
-        return floor;
-    }
-
-    public void setFloor(int floor) {
-        this.floor = floor;
-    }
-
-    public int getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
     }
 
     public long getId() {
@@ -47,10 +45,21 @@ public class House extends RealEstate {
         this.id = id;
     }
 
+    public int getCountOfFloors() {
+        return countOfFloors;
+    }
 
+    public void setCountOfFloors(int countOfFloors) {
+        this.countOfFloors = countOfFloors;
+    }
 
+    public int getCountOfRooms() {
+        return countOfRooms;
+    }
 
-
+    public void setCountOfRooms(int countOfRooms) {
+        this.countOfRooms = countOfRooms;
+    }
 
     public int getArea() {
         return area;

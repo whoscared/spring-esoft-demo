@@ -3,13 +3,29 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-@Table(name = "real_estate_object")
+@Table(name = "apartment")
 public class Apartment extends RealEstate {
 
-    @Column(name = "id")
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "house")
+    private String house;
+
+    @Column(name = "apartmentNumber")
+    private String apartmentNumber;
+    @Column(name = "latitude")
+    private int latitude;
+    @Column(name = "latitude")
+    private int longitude;
     @Column(name = "floor")
     private int floor;
     @Column(name = "rooms")
@@ -17,7 +33,9 @@ public class Apartment extends RealEstate {
     @Column(name = "area")
     private int area;
 
-    private final TypeOfRealEstate typeOfRealEstate = TypeOfRealEstate.APARTMENT;
+
+    public Apartment() {
+    }
 
     public long getId() {
         return id;
@@ -26,6 +44,7 @@ public class Apartment extends RealEstate {
     public void setId(long id) {
         this.id = id;
     }
+
     public int getFloor() {
         return floor;
     }

@@ -10,13 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 import whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate;
-import whoscared.esoftdemo.esoft.demo.repositories.ApartmentRepository;
 import whoscared.esoftdemo.esoft.demo.services.ApartmentService;
 import whoscared.esoftdemo.esoft.demo.services.HouseService;
 import whoscared.esoftdemo.esoft.demo.services.LandService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/real_estate")

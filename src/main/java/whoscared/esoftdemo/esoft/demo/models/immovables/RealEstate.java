@@ -1,37 +1,13 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
-import jakarta.persistence.*;
-
-@Entity
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-@Table(name = "real_entity")
 public class RealEstate {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "street")
     private String street;
-
-    @Column(name = "house")
     private String house;
-
-    @Column(name = "apartmentNumber")
     private String apartmentNumber;
-
-    @Column(name = "latitude")
     private int latitude;
-
-    @Column(name = "longitude")
     private int longitude;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "object_id", referencedColumnName = "id")
-    private RealEstate object;
 
     public RealEstate() {
     }
