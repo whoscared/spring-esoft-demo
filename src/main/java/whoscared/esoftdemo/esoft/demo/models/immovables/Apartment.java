@@ -20,11 +20,11 @@ public class Apartment extends RealEstate {
     @Column(name = "house")
     private String house;
 
-    @Column(name = "apartmentNumber")
+    @Column(name = "apartmentnumber")
     private String apartmentNumber;
     @Column(name = "latitude")
     private int latitude;
-    @Column(name = "latitude")
+    @Column(name = "longitude")
     private int longitude;
     @Column(name = "floor")
     private int floor;
@@ -35,6 +35,18 @@ public class Apartment extends RealEstate {
 
 
     public Apartment() {
+    }
+
+    public Apartment(RealEstate realEstate){
+        city = realEstate.getCity();
+        street = realEstate.getStreet();
+        house = realEstate.getHouse();
+        apartmentNumber = realEstate.getApartmentNumber();
+        latitude = realEstate.getLatitude();
+        longitude = realEstate.getLongitude();
+        floor = realEstate.getFloors();
+        rooms = realEstate.getRooms();
+        area = realEstate.getArea();
     }
 
     public long getId() {

@@ -1,5 +1,8 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RealEstate {
 
     private String city;
@@ -9,6 +12,13 @@ public class RealEstate {
     private int latitude;
     private int longitude;
 
+    private int floors;
+
+    private int rooms;
+
+    private int area;
+
+    private TypeOfRealEstate typeOfRealEstate;
     public RealEstate() {
     }
 
@@ -58,5 +68,37 @@ public class RealEstate {
 
     public void setLongitude(int longitude) {
         this.longitude = longitude;
+    }
+
+    public int getFloors() {
+        return floors;
+    }
+
+    public void setFloors(int floors) {
+        this.floors = floors;
+    }
+
+    public int getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public TypeOfRealEstate getTypeOfRealEstate() {
+        return typeOfRealEstate;
+    }
+
+    public void setTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
+this.typeOfRealEstate = typeOfRealEstate;
     }
 }

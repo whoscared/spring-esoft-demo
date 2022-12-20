@@ -19,22 +19,32 @@ public class House extends RealEstate {
     @Column(name = "house")
     private String house;
 
-    @Column(name = "apartmentNumber")
+    @Column(name = "apartmentnumber")
     private String apartmentNumber;
     @Column(name = "latitude")
     private int latitude;
-    @Column(name = "latitude")
+    @Column(name = "longitude")
     private int longitude;
 
-    @Column(name = "countOfFloors")
+    @Column(name = "countoffloors")
     private int countOfFloors;
 
-    @Column(name = "countOfRooms")
+    @Column(name = "countofrooms")
     private int countOfRooms;
     @Column(name = "area")
     private int area;
 
     public House() {
+    }
+
+    public House(RealEstate realEstate){
+        city = realEstate.getCity();
+        street = realEstate.getStreet();
+        house = realEstate.getHouse();
+        apartmentNumber = realEstate.getApartmentNumber();
+        latitude = realEstate.getLatitude();
+        longitude = realEstate.getLongitude();
+        area = realEstate.getArea();
     }
 
     public long getId() {

@@ -22,4 +22,6 @@ public class LandService {
     }
 
     public List<Land> findByCityAndStreet (String city, String street ){return landRepository.findByCityAndStreet(city, street);}
+
+    public void save(Land land){landRepository.save(land);}
 }

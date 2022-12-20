@@ -20,4 +20,7 @@ public class ApartmentService {
         return apartmentRepository.findAll();
     }
     public List<Apartment> findByCityAndStreet (String city, String street ){return apartmentRepository.findByCityAndStreet(city, street);}
+
+    public void save(Apartment apartment){apartmentRepository.save(apartment);}
 }
+
