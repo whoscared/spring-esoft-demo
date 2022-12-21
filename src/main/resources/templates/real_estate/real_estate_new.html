@@ -6,19 +6,6 @@
 </head>
 <body>
 
-<!--<form method="post" th:object="${typeRE}">
-<div class="form-group">
-    <label for="real_estate_type">Choose object
-    <select id="real_estate_type" th:object="${typeRE}">
-        <option th:each="temp_type : ${types}"
-                th:value="${temp_type.toString()}"
-                th:text="${temp_type.toString()}">type
-        </option>
-    </select>
-    </label>
-</div>
-</form> -->
-
 <form th:method="POST" th:action="@{/real_estate}" th:object="${realEstate}">
 
     <label for="typeOfRealEstate">Choose object</label>

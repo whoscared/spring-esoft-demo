@@ -19,6 +19,7 @@ public class RealEstate {
     private int area;
 
     private TypeOfRealEstate typeOfRealEstate;
+
     public RealEstate() {
     }
 
@@ -99,6 +100,6 @@ public class RealEstate {
     }
 
     public void setTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
-this.typeOfRealEstate = typeOfRealEstate;
+        this.typeOfRealEstate = typeOfRealEstate;
     }
 }

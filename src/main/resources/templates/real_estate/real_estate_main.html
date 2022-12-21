@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<h2>Filter:</h2>
+<form method="post" th:action="@{/real_estate/filter}" th:object="${realEstate}">
+    <label for="choose_filter"></label>
+    <select id="choose_filter" th:field="*{typeOfRealEstate}">
+        <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
+                th:value="${temp_type}"
+                th:text="${temp_type.toString()}">type
+        </option>
+        <option value="" >all types</option>
+    </select>
 
+    <label for="city">City</label>
+    <input type="text" th:field="*{city}" id="city"/>
+
+    <label for="street">Street</label>
+    <input type="text" th:field="*{street}" id="street"/>
+
+    <input type="submit" value="Find"/>
+</form>
+
+<div th:if="${filter}">
+    <div th:each="object : ${filtersObjects}">
+        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getStreet()}"></p>
+    </div>
+</div>
+<div th:if="${!filter}">
+    <div th:each="object : ${allObjects}">
+        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getStreet()}"></p>
+    </div>
+</div>
 </body>
 </html>
