@@ -48,7 +48,7 @@ public class RealEstateController {
         List<RealEstate> filtersObjects = new ArrayList<>();
         if (realEstate.getTypeOfRealEstate() == null
                 && realEstate.getStreet() == null
-                && realEstate.getCity() == null){
+                && realEstate.getCity() == null) {
             model.addAttribute("filter", false);
             return "real_estate/real_estate_main";
         }
@@ -63,10 +63,10 @@ public class RealEstateController {
             filtersObjects.addAll(houseService.findAll());
             filtersObjects.addAll(landService.findAll());
         }
-        if (!realEstate.getCity().isEmpty()){
+        if (!realEstate.getCity().isEmpty()) {
             filtersObjects.removeIf(x -> !Objects.equals(x.getCity(), realEstate.getCity()));
         }
-        if (!realEstate.getStreet().isEmpty()){
+        if (!realEstate.getStreet().isEmpty()) {
             filtersObjects.removeIf(x -> !Objects.equals(x.getStreet(), realEstate.getStreet()));
         }
 

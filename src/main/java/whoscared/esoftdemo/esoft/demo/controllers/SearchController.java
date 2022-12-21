@@ -29,26 +29,27 @@ public class SearchController {
                          @ModelAttribute("person") Person person) {
         List<Person> resultOfSearch = searchClientsAndRealtors.searchPersons(person);
         model.addAttribute("personList", resultOfSearch);
-        return "search/search";
+        return "search/search_person";
     }
 
     @GetMapping()
     public String search(Model model) {
         model.addAttribute("person", new Person());
-        return "search/search";
+        return "search/search_person";
     }
 
     @PostMapping("/real_estate")
     public String searchRealEstate(Model model,
-                                   @ModelAttribute("realEstate") RealEstate realEstate){
+                                   @ModelAttribute("realEstate") RealEstate realEstate) {
         List<RealEstate> resultOfSearch = searchRealEstate.searchRealEstates(realEstate);
         model.addAttribute("objectsList", resultOfSearch);
-        return "search/search";
+        return "search/search_real_estate";
     }
+
     @GetMapping("/real_estate")
-    public String searchRealEstate(Model model){
+    public String searchRealEstate(Model model) {
         model.addAttribute("realEstate", new RealEstate());
-        return "search/search";
+        return "search/search_real_estate";
     }
 
 }

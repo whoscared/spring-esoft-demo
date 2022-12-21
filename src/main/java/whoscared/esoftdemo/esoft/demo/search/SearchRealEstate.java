@@ -33,7 +33,7 @@ public class SearchRealEstate extends SearchWithLevenshteinDistance {
         String cityAndStreet = realEstate.getCity() + " " + realEstate.getStreet();
         String houseAndApartmentNumber = realEstate.getHouse() + " " + realEstate.getApartmentNumber();
 
-        for (RealEstate temp: allObjects){
+        for (RealEstate temp : allObjects) {
             String tempCityAndStreet = "";
             String tempHouseAndApartmentNumber = "";
 
@@ -44,7 +44,7 @@ public class SearchRealEstate extends SearchWithLevenshteinDistance {
             tempHouseAndApartmentNumber += realEstate.getApartmentNumber().isEmpty() ? " " : temp.getApartmentNumber();
 
             if (levenshteinDistance(tempCityAndStreet.replace(" ", ""), cityAndStreet.replace(" ", "")) <= 3
-            && levenshteinDistance(tempHouseAndApartmentNumber.replace(" ", ""), houseAndApartmentNumber.replace(" ", "")) <= 1){
+                    && levenshteinDistance(tempHouseAndApartmentNumber.replace(" ", ""), houseAndApartmentNumber.replace(" ", "")) <= 1) {
                 result.add(temp);
             }
 

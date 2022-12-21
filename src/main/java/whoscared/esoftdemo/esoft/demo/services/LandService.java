@@ -21,7 +21,11 @@ public class LandService {
         return landRepository.findAll();
     }
 
-    public List<Land> findByCityAndStreet (String city, String street ){return landRepository.findByCityAndStreet(city, street);}
+    public List<Land> findByCityAndStreet(String city, String street) {
+        return landRepository.findByCityAndStreet(city, street);
+    }
 
-    public void save(Land land){landRepository.save(land);}
+    public void save(Land land) {
+        landRepository.save(land);
+    }
 }

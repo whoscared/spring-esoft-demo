@@ -16,11 +16,16 @@ public class ApartmentService {
         this.apartmentRepository = apartmentRepository;
     }
 
-    public List<Apartment> findAll(){
+    public List<Apartment> findAll() {
         return apartmentRepository.findAll();
     }
-    public List<Apartment> findByCityAndStreet (String city, String street ){return apartmentRepository.findByCityAndStreet(city, street);}
 
-    public void save(Apartment apartment){apartmentRepository.save(apartment);}
+    public List<Apartment> findByCityAndStreet(String city, String street) {
+        return apartmentRepository.findByCityAndStreet(city, street);
+    }
+
+    public void save(Apartment apartment) {
+        apartmentRepository.save(apartment);
+    }
 }
 

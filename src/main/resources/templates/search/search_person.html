@@ -5,7 +5,7 @@
     <title>Search</title>
 </head>
 <body>
-
+<h2>Search person:</h2>
 <form th:method="POST" th:action="@{/search}" th:object="${person}">
     <label for="lastname">Lastname</label>
     <input type="text" th:field="*{lastname}" id="lastname"/>
@@ -38,6 +38,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

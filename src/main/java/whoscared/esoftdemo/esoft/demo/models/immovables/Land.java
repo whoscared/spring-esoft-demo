@@ -3,7 +3,7 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "land")
+@Table(name = "land")
 public class Land extends RealEstate {
 
     @Id
@@ -35,7 +35,7 @@ public class Land extends RealEstate {
     public Land() {
     }
 
-    public Land(RealEstate realEstate){
+    public Land(RealEstate realEstate) {
         city = realEstate.getCity();
         street = realEstate.getStreet();
         house = realEstate.getHouse();

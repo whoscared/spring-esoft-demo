@@ -17,10 +17,15 @@ public class HouseService {
         this.houseRepository = houseRepository;
     }
 
-    public List<House> findAll(){
+    public List<House> findAll() {
         return houseRepository.findAll();
     }
-    public List<House> findByCityAndStreet (String city, String street ){return houseRepository.findByCityAndStreet(city, street);}
 
-    public void save(House house){houseRepository.save(house);}
+    public List<House> findByCityAndStreet(String city, String street) {
+        return houseRepository.findByCityAndStreet(city, street);
+    }
+
+    public void save(House house) {
+        houseRepository.save(house);
+    }
 }

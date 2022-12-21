@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface LandRepository extends JpaRepository<Land, Long> {
-    List<Land> findByCityAndStreet (String city, String street);
+    List<Land> findByCityAndStreet(String city, String street);
 }
