@@ -24,6 +24,10 @@ public class RealtorService {
         return realtorRepository.findAll();
     }
 
+    public List<Realtor> findWithoutOffer() {
+        return allRealtors().stream().filter(x -> x.getOffer() == null).toList();
+    }
+
     public void save(Realtor realtor) {
         realtorRepository.save(realtor);
     }

@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
-import whoscared.esoftdemo.esoft.demo.models.offer.TypeOfOffer;
 
 @Entity
 @Table(name = "realtor")

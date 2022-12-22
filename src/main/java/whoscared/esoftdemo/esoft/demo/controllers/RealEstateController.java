@@ -64,7 +64,8 @@ public class RealEstateController {
         }
         if (realEstate.getTypeOfRealEstate() != null) {
             switch (realEstate.getTypeOfRealEstate()) {
-                case APARTMENT -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.APARTMENT));
+                case APARTMENT ->
+                        filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.APARTMENT));
                 case HOUSE -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.HOUSE));
                 case LAND -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.LAND));
             }

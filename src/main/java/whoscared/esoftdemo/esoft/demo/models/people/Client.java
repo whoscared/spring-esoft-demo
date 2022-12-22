@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
-import whoscared.esoftdemo.esoft.demo.models.offer.TypeOfOffer;
 
 
 @Entity

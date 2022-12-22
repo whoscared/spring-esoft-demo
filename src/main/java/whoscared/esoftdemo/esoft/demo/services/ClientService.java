@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.repositories.ClientRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClientService {
@@ -42,6 +44,11 @@ public class ClientService {
 
     public Client findById(long id) {
         return clientRepository.findById(id).orElse(null);
+    }
+
+    public List<Client> findWithoutOffer () {
+        //List<Client> allClients = allClients().stream().filter(x -> x.getOffer() == null).toList();
+        return allClients().stream().filter(x -> x.getOffer() == null).toList();
     }
 
     public void update(long id, Client client) {
