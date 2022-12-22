@@ -2,7 +2,7 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import org.springframework.stereotype.Component;
+import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
 @Entity
 @Table(name = "real_estate")
@@ -17,7 +17,6 @@ public class RealEstate {
     @Column(name = "id")
     private long id;
 
-    @NotEmpty
     @Column(name = "type_of_real_estate")
     private TypeOfRealEstate typeOfRealEstate;
     @Column(name = "city")
@@ -29,24 +28,42 @@ public class RealEstate {
     @Column(name = "apartment_number")
     private String apartmentNumber;
     @Column(name = "latitude")
-    private int latitude;
+    private Integer latitude;
     @Column(name = "longitude")
-    private int longitude;
+    private Integer longitude;
 
     @Column(name = "floor")
-    private int floors;
+    private Integer floor;
 
     @Column(name = "rooms")
-    private int rooms;
+    private Integer rooms;
 
     @Column(name = "area")
-    private int area;
+    private Integer area;
+
+    @OneToOne
+    @JoinColumn(name = "offer",referencedColumnName = "id")
+    private Offer offer;
 
 
     public RealEstate() {
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public TypeOfRealEstate getTypeOfRealEstate() {
+        return typeOfRealEstate;
+    }
+
+    public void setTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
+        this.typeOfRealEstate = typeOfRealEstate;
+    }
 
     public String getCity() {
         return city;
@@ -80,39 +97,39 @@ public class RealEstate {
         this.apartmentNumber = apartmentNumber;
     }
 
-    public int getLatitude() {
+    public Integer getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(Integer latitude) {
         this.latitude = latitude;
     }
 
-    public int getLongitude() {
+    public Integer getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(Integer longitude) {
         this.longitude = longitude;
     }
 
-    public int getFloors() {
-        return floors;
+    public Integer getFloor() {
+        return floor;
     }
 
-    public void setFloors(int floors) {
-        this.floors = floors;
+    public void setFloor(int floor) {
+            this.floor = floor;
     }
 
-    public int getRooms() {
+    public Integer getRooms() {
         return rooms;
     }
 
     public void setRooms(int rooms) {
-        this.rooms = rooms;
+            this.rooms = rooms;
     }
 
-    public int getArea() {
+    public Integer getArea() {
         return area;
     }
 
@@ -120,11 +137,18 @@ public class RealEstate {
         this.area = area;
     }
 
-    public TypeOfRealEstate getTypeOfRealEstate() {
-        return typeOfRealEstate;
+    public void toRealEstateObject(TypeOfRealEstate typeOfRealEstate){
+        if (typeOfRealEstate == TypeOfRealEstate.LAND){
+            floor = null;
+            rooms = null;
+        }
     }
 
-    public void setTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
-        this.typeOfRealEstate = typeOfRealEstate;
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 }

@@ -93,12 +93,8 @@ public class RealEstateController {
 
     @PostMapping()
     public String addRealEstate(@ModelAttribute("realEstate") RealEstate realEstate) {
+        realEstate.toRealEstateObject(realEstate.getTypeOfRealEstate());
         realEstateService.save(realEstate);
-//        switch (realEstate.getTypeOfRealEstate()) {
-//            case APARTMENT -> apartmentService.save(new Apartment(realEstate));
-//            case HOUSE -> houseService.save(new House(realEstate));
-//            case LAND -> landService.save(new Land(realEstate));
-//        }
         return "redirect:/";
     }
 }

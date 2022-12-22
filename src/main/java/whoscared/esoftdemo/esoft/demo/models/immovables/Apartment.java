@@ -1,6 +1,7 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -45,41 +46,19 @@ public class Apartment extends RealEstate {
         apartmentNumber = realEstate.getApartmentNumber();
         latitude = realEstate.getLatitude();
         longitude = realEstate.getLongitude();
-        floor = realEstate.getFloors();
+        floor = realEstate.getFloor();
         rooms = realEstate.getRooms();
         area = realEstate.getArea();
     }
 
+    @Override
     public long getId() {
         return id;
     }
 
+    @Override
     public void setId(long id) {
         this.id = id;
-    }
-
-    public int getFloor() {
-        return floor;
-    }
-
-    public void setFloor(int floor) {
-        this.floor = floor;
-    }
-
-    public int getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(int rooms) {
-        this.rooms = rooms;
-    }
-
-    public int getArea() {
-        return area;
-    }
-
-    public void setArea(int area) {
-        this.area = area;
     }
 
     @Override
@@ -123,27 +102,62 @@ public class Apartment extends RealEstate {
     }
 
     @Override
-    public int getLatitude() {
+    public Integer getLatitude() {
         return latitude;
     }
 
     @Override
-    public void setLatitude(int latitude) {
+    public void setLatitude(Integer latitude) {
         this.latitude = latitude;
     }
 
     @Override
-    public int getLongitude() {
+    public Integer getLongitude() {
         return longitude;
     }
 
     @Override
-    public void setLongitude(int longitude) {
+    public void setLongitude(Integer longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public Integer getFloor() {
+        return floor;
+    }
+
+    @Override
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    @Override
+    public Integer getRooms() {
+        return rooms;
+    }
+
+    @Override
+    public void setRooms(int rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public Integer getArea() {
+        return area;
+    }
+
+    @Override
+    public void setArea(int area) {
+        this.area = area;
     }
 
     @Override
     public TypeOfRealEstate getTypeOfRealEstate() {
         return typeOfRealEstate;
+    }
+
+    @Override
+    public void setTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
+        this.typeOfRealEstate = typeOfRealEstate;
     }
 }

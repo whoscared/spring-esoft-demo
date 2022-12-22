@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 import whoscared.esoftdemo.esoft.demo.models.offer.TypeOfOffer;
 
 @Entity
@@ -34,8 +35,9 @@ public class Realtor extends Person {
     @Column(name = "share_of_commission")
     private int shareOfCommission;
 
-    @Column(name = "offer")
-    private TypeOfOffer offer;
+    @OneToOne
+    @JoinColumn(name = "offer" ,referencedColumnName = "id")
+    private Offer offer;
 
     public long getId() {
         return id;
@@ -77,11 +79,11 @@ public class Realtor extends Person {
         this.shareOfCommission = shareOfCommission;
     }
 
-    public TypeOfOffer getOffer() {
+    public Offer getOffer() {
         return offer;
     }
 
-    public void setOffer(TypeOfOffer offer) {
+    public void setOffer(Offer offer) {
         this.offer = offer;
     }
 }
