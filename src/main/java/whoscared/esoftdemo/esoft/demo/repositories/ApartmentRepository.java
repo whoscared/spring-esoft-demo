@@ -6,9 +6,9 @@ import whoscared.esoftdemo.esoft.demo.models.immovables.Apartment;
 
 import java.util.List;
 
-@Repository
-public interface ApartmentRepository extends JpaRepository<Apartment, Long> {
-
-    List<Apartment> findByCityAndStreet(String city, String street);
-
-}
+//@Repository
+//public interface ApartmentRepository extends JpaRepository<Apartment, Long> {
+//
+//    List<Apartment> findByCityAndStreet(String city, String street);
+//
+//}

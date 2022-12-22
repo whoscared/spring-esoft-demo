@@ -6,9 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.immovables.*;
-import whoscared.esoftdemo.esoft.demo.services.ApartmentService;
-import whoscared.esoftdemo.esoft.demo.services.HouseService;
-import whoscared.esoftdemo.esoft.demo.services.LandService;
+//import whoscared.esoftdemo.esoft.demo.services.ApartmentService;
+//import whoscared.esoftdemo.esoft.demo.services.HouseService;
+//import whoscared.esoftdemo.esoft.demo.services.LandService;
+import whoscared.esoftdemo.esoft.demo.services.RealEstateService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +20,33 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/real_estate")
 public class RealEstateController {
-    private final ApartmentService apartmentService;
-    private final HouseService houseService;
-    private final LandService landService;
+//    private final ApartmentService apartmentService;
+//    private final HouseService houseService;
+//    private final LandService landService;
 
     @Autowired
-    public RealEstateController(ApartmentService apartmentService, HouseService houseService, LandService landService) {
-        this.apartmentService = apartmentService;
-        this.houseService = houseService;
-        this.landService = landService;
+    public RealEstateController(RealEstateService realEstateService) {
+        this.realEstateService = realEstateService;
     }
+
+    private final RealEstateService realEstateService;
+
+//    @Autowired
+//    public RealEstateController(ApartmentService apartmentService, HouseService houseService, LandService landService, RealEstateService realEstateService) {
+//        this.apartmentService = apartmentService;
+//        this.houseService = houseService;
+//        this.landService = landService;
+//        this.realEstateService = realEstateService;
+//    }
+
 
     @GetMapping()
     public String main(Model model) {
         model.addAttribute("realEstate", new RealEstate());
-        List<RealEstate> allObjects = new ArrayList<>();
-        allObjects.addAll(apartmentService.findAll());
-        allObjects.addAll(houseService.findAll());
-        allObjects.addAll(landService.findAll());
+        List<RealEstate> allObjects = new ArrayList<>(realEstateService.findAll());
+//        allObjects.addAll(apartmentService.findAll());
+//        allObjects.addAll(houseService.findAll());
+//        allObjects.addAll(landService.findAll());
         model.addAttribute("allObjects", allObjects);
         model.addAttribute("filter", false);
         return "real_estate/real_estate_main";
@@ -54,14 +64,12 @@ public class RealEstateController {
         }
         if (realEstate.getTypeOfRealEstate() != null) {
             switch (realEstate.getTypeOfRealEstate()) {
-                case APARTMENT -> filtersObjects.addAll(apartmentService.findAll());
-                case HOUSE -> filtersObjects.addAll(houseService.findAll());
-                case LAND -> filtersObjects.addAll(landService.findAll());
+                case APARTMENT -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.APARTMENT));
+                case HOUSE -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.HOUSE));
+                case LAND -> filtersObjects.addAll(realEstateService.findByTypeOfRealEstate(TypeOfRealEstate.LAND));
             }
         } else {
-            filtersObjects.addAll(apartmentService.findAll());
-            filtersObjects.addAll(houseService.findAll());
-            filtersObjects.addAll(landService.findAll());
+            filtersObjects.addAll(realEstateService.findAll());
         }
         if (!realEstate.getCity().isEmpty()) {
             filtersObjects.removeIf(x -> !Objects.equals(x.getCity(), realEstate.getCity()));
@@ -78,18 +86,19 @@ public class RealEstateController {
     @GetMapping("/new")
     public String newRealEstate(Model model) {
         model.addAttribute("realEstate", new RealEstate());
-        List<TypeOfRealEstate> types = List.of(TypeOfRealEstate.APARTMENT, TypeOfRealEstate.HOUSE, TypeOfRealEstate.LAND);
-        model.addAttribute("types", types);
+        //List<TypeOfRealEstate> types = List.of(TypeOfRealEstate.APARTMENT, TypeOfRealEstate.HOUSE, TypeOfRealEstate.LAND);
+        model.addAttribute("types", List.of(TypeOfRealEstate.APARTMENT, TypeOfRealEstate.HOUSE, TypeOfRealEstate.LAND));
         return "real_estate/real_estate_new";
     }
 
     @PostMapping()
     public String addRealEstate(@ModelAttribute("realEstate") RealEstate realEstate) {
-        switch (realEstate.getTypeOfRealEstate()) {
-            case APARTMENT -> apartmentService.save(new Apartment(realEstate));
-            case HOUSE -> houseService.save(new House(realEstate));
-            case LAND -> landService.save(new Land(realEstate));
-        }
+        realEstateService.save(realEstate);
+//        switch (realEstate.getTypeOfRealEstate()) {
+//            case APARTMENT -> apartmentService.save(new Apartment(realEstate));
+//            case HOUSE -> houseService.save(new House(realEstate));
+//            case LAND -> landService.save(new Land(realEstate));
+//        }
         return "redirect:/";
     }
 }

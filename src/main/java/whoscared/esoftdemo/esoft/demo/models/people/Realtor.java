@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import whoscared.esoftdemo.esoft.demo.models.Offer;
-import whoscared.esoftdemo.esoft.demo.models.people.Person;
+import whoscared.esoftdemo.esoft.demo.models.offer.TypeOfOffer;
 
 @Entity
 @Table(name = "realtor")
@@ -36,7 +35,7 @@ public class Realtor extends Person {
     private int shareOfCommission;
 
     @Column(name = "offer")
-    private Offer offer;
+    private TypeOfOffer offer;
 
     public long getId() {
         return id;
@@ -78,11 +77,11 @@ public class Realtor extends Person {
         this.shareOfCommission = shareOfCommission;
     }
 
-    public Offer getOffer() {
+    public TypeOfOffer getOffer() {
         return offer;
     }
 
-    public void setOffer(Offer offer) {
+    public void setOffer(TypeOfOffer offer) {
         this.offer = offer;
     }
 }

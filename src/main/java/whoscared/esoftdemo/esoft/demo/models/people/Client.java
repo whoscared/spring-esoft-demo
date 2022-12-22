@@ -3,7 +3,7 @@ package whoscared.esoftdemo.esoft.demo.models.people;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
-import whoscared.esoftdemo.esoft.demo.models.Offer;
+import whoscared.esoftdemo.esoft.demo.models.offer.TypeOfOffer;
 
 
 @Entity
@@ -34,7 +34,7 @@ public class Client extends Person {
     private String email;
 
     @Column(name = "offer")
-    private Offer offer;
+    private TypeOfOffer offer;
 
     public long getId() {
         return id;
@@ -84,11 +84,11 @@ public class Client extends Person {
         this.email = email;
     }
 
-    public Offer getOffer() {
+    public TypeOfOffer getOffer() {
         return offer;
     }
 
-    public void setOffer(Offer offer) {
+    public void setOffer(TypeOfOffer offer) {
         this.offer = offer;
     }
 }

@@ -1,36 +1,36 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "apartment")
+@Component
 public class Apartment extends RealEstate {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
     private long id;
 
-    @Column(name = "city")
+//    @Column(name = "city")
     private String city;
 
-    @Column(name = "street")
+//    @Column(name = "street")
     private String street;
 
-    @Column(name = "house")
+//    @Column(name = "house")
     private String house;
 
-    @Column(name = "apartmentnumber")
+//    @Column(name = "apartmentnumber")
     private String apartmentNumber;
-    @Column(name = "latitude")
-    private int latitude;
-    @Column(name = "longitude")
-    private int longitude;
-    @Column(name = "floor")
+//    @Column(name = "latitude")
+    private Integer latitude = null;
+//    @Column(name = "longitude")
+    private Integer longitude = null;
+//    @Column(name = "floor")
     private int floor;
-    @Column(name = "countofrooms")
+//    @Column(name = "countofrooms")
     private int rooms;
-    @Column(name = "apartmentarea")
+//    @Column(name = "apartmentarea")
     private int area;
 
     @Column(name = "type_of_real_estate")

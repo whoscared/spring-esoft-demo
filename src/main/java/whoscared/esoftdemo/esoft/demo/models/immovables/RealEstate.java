@@ -1,27 +1,52 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity
+@Table(name = "real_estate")
 public class RealEstate {
+//добавить предложение и добавить предложение в таблицы данных моделей в бд как столбец
+    // удаление объекта связанного с приложением невозможно
+    //предложение - отдельная таблица, с которой связаны три таблицы типов объектов и таблицы клиентов и риэлторов
+    //организовать поиск в заданных координатах
+    //добавить валидацию объектов (координаты)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
 
+    @NotEmpty
+    @Column(name = "type_of_real_estate")
+    private TypeOfRealEstate typeOfRealEstate;
+    @Column(name = "city")
     private String city;
+    @Column(name = "street")
     private String street;
+    @Column(name = "house")
     private String house;
+    @Column(name = "apartment_number")
     private String apartmentNumber;
+    @Column(name = "latitude")
     private int latitude;
+    @Column(name = "longitude")
     private int longitude;
 
+    @Column(name = "floor")
     private int floors;
 
+    @Column(name = "rooms")
     private int rooms;
 
+    @Column(name = "area")
     private int area;
 
-    private TypeOfRealEstate typeOfRealEstate;
 
     public RealEstate() {
     }
+
+
 
     public String getCity() {
         return city;
