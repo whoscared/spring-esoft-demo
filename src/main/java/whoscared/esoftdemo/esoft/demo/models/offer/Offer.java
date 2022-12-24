@@ -13,19 +13,61 @@ public class Offer {
     @Column(name = "id")
     private long id;
 
-    @OneToOne(mappedBy = "offer")
-    @PrimaryKeyJoinColumn
+    @OneToOne
+    @JoinColumn(name = "client", referencedColumnName = "id")
     private Client client;
 
-    @OneToOne(mappedBy = "offer")
-    @PrimaryKeyJoinColumn
+    @OneToOne
+    @JoinColumn(name = "realtor", referencedColumnName = "id")
     private Realtor realtor;
 
-    @OneToOne(mappedBy = "offer")
-    @PrimaryKeyJoinColumn
+    @OneToOne
+    @JoinColumn(name = "real_estate", referencedColumnName = "id")
     private RealEstate realEstate;
 
     @Column(name = "price")
     private int price;
 
+    public Offer() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Realtor getRealtor() {
+        return realtor;
+    }
+
+    public void setRealtor(Realtor realtor) {
+        this.realtor = realtor;
+    }
+
+    public RealEstate getRealEstate() {
+        return realEstate;
+    }
+
+    public void setRealEstate(RealEstate realEstate) {
+        this.realEstate = realEstate;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

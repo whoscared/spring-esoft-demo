@@ -41,8 +41,7 @@ public class RealEstate {
     @Column(name = "area")
     private Integer area;
 
-    @OneToOne
-    @JoinColumn(name = "offer",referencedColumnName = "id")
+    @OneToOne(mappedBy = "realEstate")
     private Offer offer;
 
 

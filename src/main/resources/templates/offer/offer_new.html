@@ -6,31 +6,34 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/real_estate}" th:object="${realEstate}">
+<form th:method="post" th:action="@{/offer}" th:object="${offer}">
 
-  <label for="typeOfRealEstate">Choose object</label>
-  <select id="typeOfRealEstate" th:field="*{typeOfRealEstate}">
-    <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
-            th:value="${temp_type}"
-            th:text="${temp_type.toString()}">type
+  <label for="client">Choose client</label>
+  <select id="client" th:field="*{client}">
+    <option th:each="temp_client : ${clientList}"
+            th:value="${temp_client.getId()}"
+            th:text="${temp_client.getLastname()} + ' ' + ${temp_client.getFirstname()} + ' ' + ${temp_client.getEmail()}">type
     </option>
   </select>
 
-  <label for="typeOfRealEstate">Choose object</label>
-  <select id="typeOfRealEstate" th:field="*{typeOfRealEstate}">
-    <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
-            th:value="${temp_type}"
-            th:text="${temp_type.toString()}">type
+  <label for="realtor">Choose realtor</label>
+  <select id="realtor" th:field="*{realtor}">
+    <option th:each="temp_realtor : ${realtorList}"
+            th:value="${temp_realtor.getId()}"
+            th:text="${temp_realtor.getLastname()} + ' ' + ${temp_realtor.getFirstname()}">type
     </option>
   </select>
 
-  <label for="typeOfRealEstate">Choose object</label>
-  <select id="typeOfRealEstate" th:field="*{typeOfRealEstate}">
-    <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
-            th:value="${temp_type}"
-            th:text="${temp_type.toString()}">type
+  <label for="realEstate">Choose realEstateList</label>
+  <select id="realEstate" th:field="*{realEstate}">
+    <option th:each="temp_realEstate : ${realEstateList}"
+            th:value="${temp_realEstate.getId()}"
+            th:text="${temp_realEstate.getTypeOfRealEstate().toString()} + ' ' + ${temp_realEstate.getStreet()} + ', ' + ${temp_realEstate.getHouse()}">type
     </option>
   </select>
+
+  <label for="price">Price</label>
+  <input type="text" th:field="*{price}" id="price"/>
 
   <input type="submit" value="Save"/>
 </form>

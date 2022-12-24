@@ -38,7 +38,7 @@ public class RealtorController {
             return "realtor/realtor_new";
         }
         realtorService.save(realtor);
-        return "redirect:/realtor";
+        return "redirect:/realtor/main";
     }
 
 //    @GetMapping("/{id}")

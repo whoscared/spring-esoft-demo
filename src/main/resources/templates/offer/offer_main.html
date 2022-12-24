@@ -6,5 +6,10 @@
 </head>
 <body>
 
+<div th:each="offer : ${offerList}">
+    <p th:text="${offer.getPrice()} + ' ' + ${offer.getClient().getFirstname()} + ' '
+    + ${offer.getClient().getLastname()} "></p>
+</div>
+
 </body>
 </html>

@@ -33,8 +33,7 @@ public class Client extends Person {
     @Column(name = "email")
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "offer" ,referencedColumnName = "id")
+    @OneToOne(mappedBy = "client")
     private Offer offer;
 
     public long getId() {

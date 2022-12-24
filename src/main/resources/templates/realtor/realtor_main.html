@@ -8,7 +8,7 @@
 
 <div th:each="realtor : ${realtors}">
     <p th:text="${realtor.getFirstname()} + ' ' + ${realtor.getLastname()} + ' '
-    + ${realtor.getPatronymic()} +  ' ' + ${realtor.getShareOfCommission()} + ' ' + ${client.getOffer()}"></p>
+    + ${realtor.getPatronymic()} +  ' ' + ${realtor.getShareOfCommission()}"></p>
 </div>
 
 <a href="/realtor/new" >add new realtor</a>

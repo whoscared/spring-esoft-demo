@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 import whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate;
 import whoscared.esoftdemo.esoft.demo.repositories.RealEstateRepository;
-import whoscared.esoftdemo.esoft.demo.repositories.RealtorRepository;
+
 
 import java.util.List;
 
@@ -29,6 +29,10 @@ public class RealEstateService {
 
     public List<RealEstate> findByTypeOfRealEstate (TypeOfRealEstate typeOfRealEstate){
         return realEstateRepository.findByTypeOfRealEstate(typeOfRealEstate);
+    }
+
+    public List<RealEstate> findWithoutOffer () {
+        return findAll().stream().filter(x -> x.getOffer() == null).toList();
     }
 
     public void save(RealEstate realEstate) {

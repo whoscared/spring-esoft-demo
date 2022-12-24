@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 import whoscared.esoftdemo.esoft.demo.services.ClientService;
 import whoscared.esoftdemo.esoft.demo.services.OfferService;
+import whoscared.esoftdemo.esoft.demo.services.RealEstateService;
 import whoscared.esoftdemo.esoft.demo.services.RealtorService;
 
 @Controller
@@ -19,13 +20,21 @@ public class OfferController {
 
     private final ClientService clientService;
     private final RealtorService realtorService;
+
+    private final RealEstateService realEstateService;
     private final OfferService offerService;
 
     @Autowired
-    public OfferController(ClientService clientService, RealtorService realtorService, OfferService offerService) {
+    public OfferController(ClientService clientService, RealtorService realtorService, RealEstateService realEstateService, OfferService offerService) {
         this.clientService = clientService;
         this.realtorService = realtorService;
+        this.realEstateService = realEstateService;
         this.offerService = offerService;
+    }
+    @GetMapping("/main")
+    public String main (Model model){
+        model.addAttribute("offerList", offerService.findAll());
+        return "offer/offer_main";
     }
 
     @GetMapping("/new")
@@ -33,12 +42,16 @@ public class OfferController {
         model.addAttribute("offer", new Offer());
         model.addAttribute("clientList", clientService.findWithoutOffer());
         model.addAttribute("realtorList", realtorService.findWithoutOffer());
-        return null;
+        model.addAttribute("realEstateList", realEstateService.findWithoutOffer());
+        System.out.println("привет");
+        return "offer/offer_new";
     }
 
-    @PostMapping("")
+    @PostMapping()
     public String saveOffer (@ModelAttribute("offer") Offer offer){
-        return null;
+        System.out.println("привет");
+        offerService.save(offer);
+        return "redirect:/offer/main";
     }
 
 }
