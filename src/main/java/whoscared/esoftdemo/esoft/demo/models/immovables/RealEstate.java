@@ -2,6 +2,7 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import whoscared.esoftdemo.esoft.demo.models.Address;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
 @Entity
@@ -31,6 +32,10 @@ public class RealEstate {
     private Integer latitude;
     @Column(name = "longitude")
     private Integer longitude;
+
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     @Column(name = "floor")
     private Integer floor;
