@@ -6,7 +6,9 @@
 </head>
 <body>
 <div th:each=" temp_deal : ${dealList}">
-  <a th:href="@{/deal/{id}(id = ${temp_deal.getId()})}" th:text="'Deal №' + ${temp_deal.getId()}"></a>
+    <a th:href="@{/deal/{id}(id = ${temp_deal.getId()})}" th:text="'Deal №' + ${temp_deal.getId()}"></a>
 </div>
+<a href="deal/new"> Add new deal</a>
+<a href="deal/search"> Search for deal</a>
 </body>
 </html>

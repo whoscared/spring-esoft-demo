@@ -11,8 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface DemandRepository extends JpaRepository<Demand, Long> {
-    List<Demand> findByClient (Client client);
-    List<Demand> findByRealtor (Realtor realtor);
+    List<Demand> findByClient(Client client);
+
+    List<Demand> findByRealtor(Realtor realtor);
 
 
 }

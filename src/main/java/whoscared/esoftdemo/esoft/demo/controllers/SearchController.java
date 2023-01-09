@@ -21,7 +21,6 @@ public class SearchController {
     private final SearchRealEstate searchRealEstate;
 
 
-
     @Autowired
     public SearchController(SearchClientsAndRealtors searchClientsAndRealtors, SearchRealEstate searchRealEstate) {
         this.searchClientsAndRealtors = searchClientsAndRealtors;

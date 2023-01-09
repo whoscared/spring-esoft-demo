@@ -17,18 +17,19 @@ public class DemandService {
         this.demandRepository = demandRepository;
     }
 
-    public void save (Demand demand){
+    public void save(Demand demand) {
         demandRepository.save(demand);
     }
 
-    public List<Demand> findAll (){
+    public List<Demand> findAll() {
         return demandRepository.findAll();
     }
 
-    public Demand findById(Long id){
+    public Demand findById(Long id) {
         return demandRepository.findById(id).orElse(null);
     }
-    public List<Demand> findWithoutDeal () {
-        return findAll().stream().filter(x->x.getDeal() == null).toList();
+
+    public List<Demand> findWithoutDeal() {
+        return findAll().stream().filter(x -> x.getDeal() == null).toList();
     }
 }

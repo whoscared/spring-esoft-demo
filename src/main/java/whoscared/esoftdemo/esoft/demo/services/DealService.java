@@ -16,14 +16,15 @@ public class DealService {
         this.dealRepository = dealRepository;
     }
 
-    public void save (Deal deal){
+    public void save(Deal deal) {
         dealRepository.save(deal);
     }
-    public Deal findById (Long id){
+
+    public Deal findById(Long id) {
         return dealRepository.findById(id).orElse(null);
     }
 
-    public List<Deal> findAll(){
+    public List<Deal> findAll() {
         return dealRepository.findAll();
     }
 }

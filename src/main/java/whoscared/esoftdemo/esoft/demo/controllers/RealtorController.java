@@ -69,7 +69,7 @@ public class RealtorController {
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id,
                          Model model) {
-        if (realtorService.findById(id).getOffer() != null){
+        if (realtorService.findById(id).getOffer() != null) {
             model.addAttribute("error", "You have not to delete this realtor!(This realtor has a offer)");
             return "realtor/realtor_id";
         }

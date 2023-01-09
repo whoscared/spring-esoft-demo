@@ -22,8 +22,8 @@ public class DeductionsAndCommissions {
 
         priceForCustomer = (priceRealEstate * 0.03);
 
-        commissionForRealtorSalesman = priceForSalesman * deal.getOffer().getRealtor().getShareOfCommission()*0.01;
-        commissionForRealtorCustomer = priceForCustomer * deal.getDemand().getRealtor().getShareOfCommission()*0.01;
+        commissionForRealtorSalesman = priceForSalesman * deal.getOffer().getRealtor().getShareOfCommission() * 0.01;
+        commissionForRealtorCustomer = priceForCustomer * deal.getDemand().getRealtor().getShareOfCommission() * 0.01;
 
         deductionsCompany = (priceForSalesman - commissionForRealtorSalesman) + (priceForCustomer - commissionForRealtorCustomer);
     }

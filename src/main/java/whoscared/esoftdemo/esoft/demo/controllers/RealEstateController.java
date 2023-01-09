@@ -31,7 +31,7 @@ public class RealEstateController {
     }
 
     private final RealEstateService realEstateService;
-private final AddressService addressService;
+    private final AddressService addressService;
 
 //    @Autowired
 //    public RealEstateController(ApartmentService apartmentService, HouseService houseService, LandService landService, RealEstateService realEstateService) {

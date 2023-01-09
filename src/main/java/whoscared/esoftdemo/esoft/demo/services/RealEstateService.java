@@ -27,11 +27,11 @@ public class RealEstateService {
 //        return realEstateRepository.findByCityAndStreet(city, street);
 //    }
 
-    public List<RealEstate> findByTypeOfRealEstate (TypeOfRealEstate typeOfRealEstate){
+    public List<RealEstate> findByTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
         return realEstateRepository.findByTypeOfRealEstate(typeOfRealEstate);
     }
 
-    public List<RealEstate> findWithoutOffer () {
+    public List<RealEstate> findWithoutOffer() {
         return findAll().stream().filter(x -> x.getOffer() == null).toList();
     }
 

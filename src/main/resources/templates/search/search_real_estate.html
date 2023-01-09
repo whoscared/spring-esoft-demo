@@ -6,34 +6,34 @@
 </head>
 <body>
 <h2>Search real estate:</h2>
-<form method="post" th:action="@{/search/real_estate}" >
+<form method="post" th:action="@{/search/real_estate}">
 
-  <label for="city">City</label>
-  <input type="text" th:field="${address.city}" id="city"/>
+    <label for="city">City</label>
+    <input type="text" th:field="${address.city}" id="city"/>
 
-  <label for="street">Street</label>
-  <input type="text" th:field="${address.street}" id="street"/>
+    <label for="street">Street</label>
+    <input type="text" th:field="${address.street}" id="street"/>
 
-  <label for="house">House</label>
-  <input type="text" th:field="${address.house}" id="house"/>
+    <label for="house">House</label>
+    <input type="text" th:field="${address.house}" id="house"/>
 
-  <label for="apartmentNumber">Apartment Number</label>
-  <input type="text" th:field="${address.apartmentNumber}" id="apartmentNumber"/>
+    <label for="apartmentNumber">Apartment Number</label>
+    <input type="text" th:field="${address.apartmentNumber}" id="apartmentNumber"/>
 
-  <input type="submit" value="Find"/>
+    <input type="submit" value="Find"/>
 </form>
 
 <div th:if="${objectsList}">
-  <div th:if="${objectsList.isEmpty()}">
-    <p style="color: brown">Objects not found</p>
-  </div>
-
-  <div th:if="${!objectsList.isEmpty()}">
-    <p>Objects found for this query:</p>
-    <div th:each="object : ${objectsList}">
-      <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getAddress().getStreet()}"></p>
+    <div th:if="${objectsList.isEmpty()}">
+        <p style="color: brown">Objects not found</p>
     </div>
-  </div>
+
+    <div th:if="${!objectsList.isEmpty()}">
+        <p>Objects found for this query:</p>
+        <div th:each="object : ${objectsList}">
+            <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getAddress().getStreet()}"></p>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -40,7 +40,8 @@ public class Demand {
     @OneToOne(mappedBy = "demand")
     private Deal deal;
 
-    public Demand(){}
+    public Demand() {
+    }
 
     public long getId() {
         return id;
@@ -137,7 +138,6 @@ public class Demand {
     public void setDeal(Deal deal) {
         this.deal = deal;
     }
-
 
 
     @Override

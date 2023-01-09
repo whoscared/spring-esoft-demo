@@ -8,7 +8,7 @@ import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 @Entity
 @Table(name = "real_estate")
 public class RealEstate {
-//добавить предложение и добавить предложение в таблицы данных моделей в бд как столбец
+    //добавить предложение и добавить предложение в таблицы данных моделей в бд как столбец
     // удаление объекта связанного с приложением невозможно
     //предложение - отдельная таблица, с которой связаны три таблицы типов объектов и таблицы клиентов и риэлторов
     //организовать поиск в заданных координатах
@@ -123,7 +123,7 @@ public class RealEstate {
     }
 
     public void setFloor(int floor) {
-            this.floor = floor;
+        this.floor = floor;
     }
 
     public Integer getRooms() {
@@ -131,7 +131,7 @@ public class RealEstate {
     }
 
     public void setRooms(int rooms) {
-            this.rooms = rooms;
+        this.rooms = rooms;
     }
 
     public Integer getArea() {
@@ -142,8 +142,8 @@ public class RealEstate {
         this.area = area;
     }
 
-    public void toRealEstateObject(TypeOfRealEstate typeOfRealEstate){
-        if (typeOfRealEstate == TypeOfRealEstate.LAND){
+    public void toRealEstateObject(TypeOfRealEstate typeOfRealEstate) {
+        if (typeOfRealEstate == TypeOfRealEstate.LAND) {
             floor = null;
             rooms = null;
         }

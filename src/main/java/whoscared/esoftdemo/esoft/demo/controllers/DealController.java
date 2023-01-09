@@ -30,7 +30,7 @@ public class DealController {
     }
 
     @GetMapping()
-    public String allDeals(Model model){
+    public String allDeals(Model model) {
         model.addAttribute("dealList", dealService.findAll());
         return "deal/deal_main";
     }
@@ -51,7 +51,7 @@ public class DealController {
     }
 
     @GetMapping("/{id}")
-    public String currentDeal (@PathVariable("id") Long id, Model model){
+    public String currentDeal(@PathVariable("id") Long id, Model model) {
         Deal currentDeal = dealService.findById(id);
         model.addAttribute("deal", currentDeal);
         model.addAttribute("dedAndComm", new DeductionsAndCommissions(currentDeal));
@@ -59,7 +59,7 @@ public class DealController {
     }
 
     @GetMapping("/search")
-    public String search (Model model){
+    public String search(Model model) {
         model.addAttribute("deal", new Deal());
         model.addAttribute("demand", new Demand());
         model.addAttribute("demandList", demandService.findWithoutDeal());
@@ -68,8 +68,8 @@ public class DealController {
     }
 
     @PostMapping("/search")
-    public String searchByDemand (@ModelAttribute(name = "deal")Deal deal,
-                                  Model model){
+    public String searchByDemand(@ModelAttribute(name = "deal") Deal deal,
+                                 Model model) {
         //Deal temp_deal = new Deal();
         //temp_deal.setDemand(demandService.findById(demand.getId()));
         List<Offer> goodOffer = offerService.findByDemand(deal.getDemand());

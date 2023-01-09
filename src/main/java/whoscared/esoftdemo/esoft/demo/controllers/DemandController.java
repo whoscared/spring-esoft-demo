@@ -33,14 +33,14 @@ public class DemandController {
     }
 
     @GetMapping()
-    public String mainDemand (Model model){
+    public String mainDemand(Model model) {
         demandService.findAll();
         model.addAttribute("demandList", demandService.findAll());
         return "demand/demand_main";
     }
 
     @GetMapping("/new")
-    public String newDemand (Model model){
+    public String newDemand(Model model) {
         model.addAttribute("clientList", clientService.allClients());
         model.addAttribute("realtorList", realtorService.allRealtors());
         model.addAttribute("demand", new Demand());
@@ -49,8 +49,8 @@ public class DemandController {
     }
 
     @PostMapping()
-    public String saveDemand (@ModelAttribute (value = "demand") Demand demand,
-                              @ModelAttribute(value = "address") Address address){
+    public String saveDemand(@ModelAttribute(value = "demand") Demand demand,
+                             @ModelAttribute(value = "address") Address address) {
         addressService.save(address);
         demand.setAddress(address);
         demandService.save(demand);

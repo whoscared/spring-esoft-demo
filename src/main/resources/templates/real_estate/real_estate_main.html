@@ -6,14 +6,14 @@
 </head>
 <body>
 <h2>Filter:</h2>
-<form method="post" th:action="@{/real_estate/filter}" >
+<form method="post" th:action="@{/real_estate/filter}">
     <label for="choose_filter"></label>
     <select id="choose_filter" th:field="${realEstate.typeOfRealEstate}">
         <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
                 th:value="${temp_type}"
                 th:text="${temp_type.toString()}">type
         </option>
-        <option value="" >ALL TYPES</option>
+        <option value="">ALL TYPES</option>
     </select>
 
     <label for="city">City</label>

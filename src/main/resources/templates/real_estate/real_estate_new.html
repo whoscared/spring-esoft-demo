@@ -9,12 +9,12 @@
 <form th:method="POST" th:action="@{/real_estate}" >
 
     <label for="typeOfRealEstate">Choose object</label>
-        <select id="typeOfRealEstate" th:field="${realEstate.typeOfRealEstate}">
-            <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
-                    th:value="${temp_type}"
-                    th:text="${temp_type.toString()}">type
-            </option>
-        </select>
+    <select id="typeOfRealEstate" th:field="${realEstate.typeOfRealEstate}">
+        <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
+                th:value="${temp_type}"
+                th:text="${temp_type.toString()}">type
+        </option>
+    </select>
 
     <label for="city">City</label>
     <input type="text" th:field="${address.city}" id="city"/>

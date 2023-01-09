@@ -22,7 +22,8 @@
     <select id="client" th:field="${demand.client}">
         <option th:each="temp_client : ${clientList}"
                 th:value="${temp_client.getId()}"
-                th:text="${temp_client.getLastname()} + ' ' + ${temp_client.getFirstname()} + ' ' + ${temp_client.getEmail()}">type
+                th:text="${temp_client.getLastname()} + ' ' + ${temp_client.getFirstname()} + ' ' + ${temp_client.getEmail()}">
+            type
         </option>
     </select>
 

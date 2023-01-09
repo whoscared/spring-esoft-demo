@@ -31,14 +31,15 @@ public class OfferController {
         this.realEstateService = realEstateService;
         this.offerService = offerService;
     }
+
     @GetMapping("/main")
-    public String main (Model model){
+    public String main(Model model) {
         model.addAttribute("offerList", offerService.findAll());
         return "offer/offer_main";
     }
 
     @GetMapping("/new")
-    public String newOffer (Model model){
+    public String newOffer(Model model) {
         model.addAttribute("offer", new Offer());
         model.addAttribute("clientList", clientService.allClients());
         model.addAttribute("realtorList", realtorService.allRealtors());
@@ -48,7 +49,7 @@ public class OfferController {
     }
 
     @PostMapping()
-    public String saveOffer (@ModelAttribute("offer") Offer offer){
+    public String saveOffer(@ModelAttribute("offer") Offer offer) {
         System.out.println("привет");
         offerService.save(offer);
         return "redirect:/offer/main";
