@@ -19,6 +19,7 @@ public class RealEstate {
     private long id;
 
     @Column(name = "type_of_real_estate")
+    @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
 //    @Column(name = "city")
 //    private String city;

@@ -6,60 +6,58 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/real_estate}" th:object="${realEstate}">
+<form th:method="POST" th:action="@{/real_estate}" >
 
     <label for="typeOfRealEstate">Choose object</label>
-        <select id="typeOfRealEstate" th:field="*{typeOfRealEstate}">
+        <select id="typeOfRealEstate" th:field="${realEstate.typeOfRealEstate}">
             <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
                     th:value="${temp_type}"
                     th:text="${temp_type.toString()}">type
             </option>
         </select>
 
-    <form th:object="${address}">
     <label for="city">City</label>
-    <input type="text" th:field="*{city}" id="city"/>
+    <input type="text" th:field="${address.city}" id="city"/>
 
     <br/>
 
     <label for="street">Street</label>
-    <input type="text" th:field="*{street}" id="street"/>
+    <input type="text" th:field="${address.street}" id="street"/>
 
     <br/>
 
     <label for="house">House</label>
-    <input type="text" th:field="*{house}" id="house"/>
+    <input type="text" th:field="${address.house}" id="house"/>
 
     <br/>
 
     <label for="apartmentNumber">Apartment Number</label>
-    <input type="text" th:field="*{apartmentNumber}" id="apartmentNumber"/>
+    <input type="text" th:field="${address.apartmentNumber}" id="apartmentNumber"/>
 
     <br/>
 
     <label for="latitude">Latitude</label>
-    <input type="text" th:field="*{latitude}" id="latitude"/>
+    <input type="text" th:field="${address.latitude}" id="latitude"/>
 
     <br/>
 
     <label for="longitude">Longitude</label>
-    <input type="text" th:field="*{longitude}" id="longitude"/>
+    <input type="text" th:field="${address.longitude}" id="longitude"/>
 
-    </form>
     <br/>
 
     <label for="floors">Floor</label>
-    <input type="text" th:field="*{floor}" id="floors"/>
+    <input type="text" th:field="${realEstate.floor}" id="floors"/>
 
     <br/>
 
     <label for="rooms">Rooms</label>
-    <input type="text" th:field="*{rooms}" id="rooms"/>
+    <input type="text" th:field="${realEstate.rooms}" id="rooms"/>
 
     <br/>
 
     <label for="area">Area</label>
-    <input type="text" th:field="*{area}" id="area"/>
+    <input type="text" th:field="${realEstate.area}" id="area"/>
 
     <br/>
 
