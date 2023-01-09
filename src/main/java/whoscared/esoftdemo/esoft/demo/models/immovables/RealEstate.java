@@ -20,18 +20,18 @@ public class RealEstate {
 
     @Column(name = "type_of_real_estate")
     private TypeOfRealEstate typeOfRealEstate;
-    @Column(name = "city")
-    private String city;
-    @Column(name = "street")
-    private String street;
-    @Column(name = "house")
-    private String house;
-    @Column(name = "apartment_number")
-    private String apartmentNumber;
-    @Column(name = "latitude")
-    private Integer latitude;
-    @Column(name = "longitude")
-    private Integer longitude;
+//    @Column(name = "city")
+//    private String city;
+//    @Column(name = "street")
+//    private String street;
+//    @Column(name = "house")
+//    private String house;
+//    @Column(name = "apartment_number")
+//    private String apartmentNumber;
+//    @Column(name = "latitude")
+//    private Integer latitude;
+//    @Column(name = "longitude")
+//    private Integer longitude;
 
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -69,53 +69,53 @@ public class RealEstate {
         this.typeOfRealEstate = typeOfRealEstate;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getHouse() {
-        return house;
-    }
-
-    public void setHouse(String house) {
-        this.house = house;
-    }
-
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    public Integer getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Integer latitude) {
-        this.latitude = latitude;
-    }
-
-    public Integer getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Integer longitude) {
-        this.longitude = longitude;
-    }
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    public String getHouse() {
+//        return house;
+//    }
+//
+//    public void setHouse(String house) {
+//        this.house = house;
+//    }
+//
+//    public String getApartmentNumber() {
+//        return apartmentNumber;
+//    }
+//
+//    public void setApartmentNumber(String apartmentNumber) {
+//        this.apartmentNumber = apartmentNumber;
+//    }
+//
+//    public Integer getLatitude() {
+//        return latitude;
+//    }
+//
+//    public void setLatitude(Integer latitude) {
+//        this.latitude = latitude;
+//    }
+//
+//    public Integer getLongitude() {
+//        return longitude;
+//    }
+//
+//    public void setLongitude(Integer longitude) {
+//        this.longitude = longitude;
+//    }
 
     public Integer getFloor() {
         return floor;
@@ -154,5 +154,25 @@ public class RealEstate {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+    public void setRooms(Integer rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
     }
 }

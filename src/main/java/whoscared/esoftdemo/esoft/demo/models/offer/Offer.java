@@ -70,4 +70,12 @@ public class Offer {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "realEstate=" + realEstate +
+                ", price=" + price +
+                '}';
+    }
 }

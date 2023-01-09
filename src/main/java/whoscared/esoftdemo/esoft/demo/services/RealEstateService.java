@@ -23,9 +23,9 @@ public class RealEstateService {
         return realEstateRepository.findAll();
     }
 
-    public List<RealEstate> findByCityAndStreet(String city, String street) {
-        return realEstateRepository.findByCityAndStreet(city, street);
-    }
+//    public List<RealEstate> findByCityAndStreet(String city, String street) {
+//        return realEstateRepository.findByCityAndStreet(city, street);
+//    }
 
     public List<RealEstate> findByTypeOfRealEstate (TypeOfRealEstate typeOfRealEstate){
         return realEstateRepository.findByTypeOfRealEstate(typeOfRealEstate);

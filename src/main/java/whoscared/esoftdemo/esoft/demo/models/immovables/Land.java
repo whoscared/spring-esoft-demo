@@ -36,12 +36,12 @@ public class Land extends RealEstate {
     }
 
     public Land(RealEstate realEstate) {
-        city = realEstate.getCity();
-        street = realEstate.getStreet();
-        house = realEstate.getHouse();
-        apartmentNumber = realEstate.getApartmentNumber();
-        latitude = realEstate.getLatitude();
-        longitude = realEstate.getLongitude();
+//        city = realEstate.getCity();
+//        street = realEstate.getStreet();
+//        house = realEstate.getHouse();
+//        apartmentNumber = realEstate.getApartmentNumber();
+//        latitude = realEstate.getLatitude();
+//        longitude = realEstate.getLongitude();
         area = realEstate.getArea();
     }
 
@@ -55,65 +55,65 @@ public class Land extends RealEstate {
         this.id = id;
     }
 
-    @Override
-    public String getCity() {
-        return city;
-    }
+//    @Override
+//    public String getCity() {
+//        return city;
+//    }
 
-    @Override
-    public void setCity(String city) {
-        this.city = city;
-    }
+//    @Override
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    @Override
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    @Override
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    @Override
+//    public String getHouse() {
+//        return house;
+//    }
+//
+//    @Override
+//    public void setHouse(String house) {
+//        this.house = house;
+//    }
 
-    @Override
-    public String getStreet() {
-        return street;
-    }
+//    @Override
+//    public String getApartmentNumber() {
+//        return apartmentNumber;
+//    }
+//
+//    @Override
+//    public void setApartmentNumber(String apartmentNumber) {
+//        this.apartmentNumber = apartmentNumber;
+//    }
 
-    @Override
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    @Override
-    public String getHouse() {
-        return house;
-    }
-
-    @Override
-    public void setHouse(String house) {
-        this.house = house;
-    }
-
-    @Override
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    @Override
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    @Override
-    public Integer getLatitude() {
-        return latitude;
-    }
-
-    @Override
-    public void setLatitude(Integer latitude) {
-        this.latitude = latitude;
-    }
-
-    @Override
-    public Integer getLongitude() {
-        return longitude;
-    }
-
-    @Override
-    public void setLongitude(Integer longitude) {
-        this.longitude = longitude;
-    }
+//    @Override
+//    public Integer getLatitude() {
+//        return latitude;
+//    }
+//
+//    @Override
+//    public void setLatitude(Integer latitude) {
+//        this.latitude = latitude;
+//    }
+//
+//    @Override
+//    public Integer getLongitude() {
+//        return longitude;
+//    }
+//
+//    @Override
+//    public void setLongitude(Integer longitude) {
+//        this.longitude = longitude;
+//    }
 
     @Override
     public Integer getArea() {

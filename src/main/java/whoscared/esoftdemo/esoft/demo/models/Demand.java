@@ -21,7 +21,7 @@ public class Demand {
     @JoinColumn(name = "realtor", referencedColumnName = "id")
     private Realtor realtor;
     @OneToOne
-    @JoinColumn(name = "address", referencedColumnName = "id")
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
     @Column(name = "min_area")
     private int minArea;
@@ -124,5 +124,19 @@ public class Demand {
 
     public void setMaxFloat(int maxFloat) {
         this.maxFloat = maxFloat;
+    }
+
+    @Override
+    public String toString() {
+        return "Demand{" +
+                "typeOfRealEstate=" + typeOfRealEstate +
+                ", address=" + address +
+                ", minArea=" + minArea +
+                ", maxArea=" + maxArea +
+                ", minRoom=" + minRoom +
+                ", maxRoom=" + maxRoom +
+                ", minFloat=" + minFloat +
+                ", maxFloat=" + maxFloat +
+                '}';
     }
 }

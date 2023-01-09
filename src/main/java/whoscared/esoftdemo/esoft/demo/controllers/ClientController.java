@@ -46,13 +46,13 @@ public class ClientController {
         return "redirect:/client/main";
     }
 
-//    @GetMapping("/{id}")
-//    public String oneClient(@PathVariable("id") long id,
-//                            Model model) {
-//        model.addAttribute("client", clientService.findById(id));
-//        model.addAttribute("offers", clientService.findById(id).getOffer());
-//        return "client/client_id";
-//    }
+    @GetMapping("/{id}")
+    public String oneClient(@PathVariable("id") long id,
+                            Model model) {
+        model.addAttribute("client", clientService.findById(id));
+        model.addAttribute("offers", clientService.findById(id).getOffer());
+        return "client/client_id";
+    }
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id,

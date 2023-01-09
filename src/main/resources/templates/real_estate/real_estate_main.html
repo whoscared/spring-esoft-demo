@@ -27,12 +27,12 @@
 
 <div th:if="${filter}">
     <div th:each="object : ${filtersObjects}">
-        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getStreet()}"></p>
+        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getAddress().getStreet()}"></p>
     </div>
 </div>
 <div th:if="${!filter}">
     <div th:each="object : ${allObjects}">
-        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getStreet()}"></p>
+        <p th:text="${object.getTypeOfRealEstate()} + ' ' + ${object.getAddress().getStreet()}"></p>
     </div>
 </div>
 </body>

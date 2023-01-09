@@ -1,6 +1,7 @@
 package whoscared.esoftdemo.esoft.demo.models;
 
 import jakarta.persistence.*;
+import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 
 @Entity
 @Table(name = "address")
@@ -21,6 +22,9 @@ public class Address {
     private Integer latitude;
     @Column(name = "longitude")
     private Integer longitude;
+
+    @OneToOne(mappedBy = "address")
+    private RealEstate realEstate;
 
     public Address(){}
 

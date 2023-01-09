@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import whoscared.esoftdemo.esoft.demo.models.Address;
 import whoscared.esoftdemo.esoft.demo.models.immovables.*;
 //import whoscared.esoftdemo.esoft.demo.services.ApartmentService;
 //import whoscared.esoftdemo.esoft.demo.services.HouseService;
@@ -57,8 +58,8 @@ public class RealEstateController {
                            @ModelAttribute(value = "realEstate") RealEstate realEstate) {
         List<RealEstate> filtersObjects = new ArrayList<>();
         if (realEstate.getTypeOfRealEstate() == null
-                && realEstate.getStreet() == null
-                && realEstate.getCity() == null) {
+                && realEstate.getAddress().getStreet() == null
+                && realEstate.getAddress().getCity() == null) {
             model.addAttribute("filter", false);
             return "real_estate/real_estate_main";
         }
@@ -72,11 +73,11 @@ public class RealEstateController {
         } else {
             filtersObjects.addAll(realEstateService.findAll());
         }
-        if (!realEstate.getCity().isEmpty()) {
-            filtersObjects.removeIf(x -> !Objects.equals(x.getCity(), realEstate.getCity()));
+        if (!realEstate.getAddress().getCity().isEmpty()) {
+            filtersObjects.removeIf(x -> !Objects.equals(x.getAddress().getCity(), realEstate.getAddress().getCity()));
         }
-        if (!realEstate.getStreet().isEmpty()) {
-            filtersObjects.removeIf(x -> !Objects.equals(x.getStreet(), realEstate.getStreet()));
+        if (!realEstate.getAddress().getStreet().isEmpty()) {
+            filtersObjects.removeIf(x -> !Objects.equals(x.getAddress().getStreet(), realEstate.getAddress().getStreet()));
         }
 
         model.addAttribute("filter", true);
@@ -87,7 +88,7 @@ public class RealEstateController {
     @GetMapping("/new")
     public String newRealEstate(Model model) {
         model.addAttribute("realEstate", new RealEstate());
-        //List<TypeOfRealEstate> types = List.of(TypeOfRealEstate.APARTMENT, TypeOfRealEstate.HOUSE, TypeOfRealEstate.LAND);
+        //model.addAttribute("address", new Address());
         model.addAttribute("types", List.of(TypeOfRealEstate.APARTMENT, TypeOfRealEstate.HOUSE, TypeOfRealEstate.LAND));
         return "real_estate/real_estate_new";
     }

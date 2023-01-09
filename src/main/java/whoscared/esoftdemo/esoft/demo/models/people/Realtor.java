@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import whoscared.esoftdemo.esoft.demo.models.Demand;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
 @Entity
@@ -36,6 +37,9 @@ public class Realtor extends Person {
 
     @OneToOne(mappedBy = "realtor")
     private Offer offer;
+
+    @OneToOne(mappedBy = "realtor")
+    private Demand demand;
 
     public long getId() {
         return id;
@@ -83,5 +87,13 @@ public class Realtor extends Person {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public Demand getDemand() {
+        return demand;
+    }
+
+    public void setDemand(Demand demand) {
+        this.demand = demand;
     }
 }

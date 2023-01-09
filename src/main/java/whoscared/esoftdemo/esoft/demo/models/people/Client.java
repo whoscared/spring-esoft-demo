@@ -3,6 +3,7 @@ package whoscared.esoftdemo.esoft.demo.models.people;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+import whoscared.esoftdemo.esoft.demo.models.Demand;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
 
@@ -35,6 +36,17 @@ public class Client extends Person {
 
     @OneToOne(mappedBy = "client")
     private Offer offer;
+
+    @OneToOne(mappedBy = "client")
+    private Demand demand;
+
+    public Demand getDemand() {
+        return demand;
+    }
+
+    public void setDemand(Demand demand) {
+        this.demand = demand;
+    }
 
     public long getId() {
         return id;

@@ -16,6 +16,7 @@
             </option>
         </select>
 
+    <form th:object="${address}">
     <label for="city">City</label>
     <input type="text" th:field="*{city}" id="city"/>
 
@@ -44,6 +45,7 @@
     <label for="longitude">Longitude</label>
     <input type="text" th:field="*{longitude}" id="longitude"/>
 
+    </form>
     <br/>
 
     <label for="floors">Floor</label>

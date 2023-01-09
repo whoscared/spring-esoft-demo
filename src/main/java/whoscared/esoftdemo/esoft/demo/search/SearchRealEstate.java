@@ -32,18 +32,18 @@ public class SearchRealEstate extends SearchWithLevenshteinDistance {
         //allObjects.addAll(houseService.findAll());
         //allObjects.addAll(landService.findAll());
 
-        String cityAndStreet = realEstate.getCity() + " " + realEstate.getStreet();
-        String houseAndApartmentNumber = realEstate.getHouse() + " " + realEstate.getApartmentNumber();
+        String cityAndStreet = realEstate.getAddress().getCity() + " " + realEstate.getAddress().getStreet();
+        String houseAndApartmentNumber = realEstate.getAddress().getHouse() + " " + realEstate.getAddress().getApartmentNumber();
 
         for (RealEstate temp : allObjects) {
             String tempCityAndStreet = "";
             String tempHouseAndApartmentNumber = "";
 
-            tempCityAndStreet += realEstate.getCity().isEmpty() ? " " : temp.getCity();
-            tempCityAndStreet += realEstate.getStreet().isEmpty() ? " " : temp.getStreet();
+            tempCityAndStreet += realEstate.getAddress().getCity().isEmpty() ? " " : temp.getAddress().getCity();
+            tempCityAndStreet += realEstate.getAddress().getStreet().isEmpty() ? " " : temp.getAddress().getStreet();
 
-            tempHouseAndApartmentNumber += realEstate.getHouse().isEmpty() ? " " : temp.getHouse();
-            tempHouseAndApartmentNumber += realEstate.getApartmentNumber().isEmpty() ? " " : temp.getApartmentNumber();
+            tempHouseAndApartmentNumber += realEstate.getAddress().getHouse().isEmpty() ? " " : temp.getAddress().getHouse();
+            tempHouseAndApartmentNumber += realEstate.getAddress().getApartmentNumber().isEmpty() ? " " : temp.getAddress().getApartmentNumber();
 
             if (levenshteinDistance(tempCityAndStreet.replace(" ", ""), cityAndStreet.replace(" ", "")) <= 3
                     && levenshteinDistance(tempHouseAndApartmentNumber.replace(" ", ""), houseAndApartmentNumber.replace(" ", "")) <= 1) {
