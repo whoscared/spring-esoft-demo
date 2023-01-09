@@ -13,6 +13,7 @@ public class Demand {
     @Column(name = "id")
     private long id;
     @Column(name = "type_of_real_estate")
+    @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
     @OneToOne
     @JoinColumn(name = "client", referencedColumnName = "id")

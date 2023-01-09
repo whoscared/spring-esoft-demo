@@ -40,9 +40,9 @@ public class OfferController {
     @GetMapping("/new")
     public String newOffer (Model model){
         model.addAttribute("offer", new Offer());
-        model.addAttribute("clientList", clientService.findWithoutOffer());
-        model.addAttribute("realtorList", realtorService.findWithoutOffer());
-        model.addAttribute("realEstateList", realEstateService.findWithoutOffer());
+        model.addAttribute("clientList", clientService.allClients());
+        model.addAttribute("realtorList", realtorService.allRealtors());
+        model.addAttribute("realEstateList", realEstateService.findAll());
         System.out.println("привет");
         return "offer/offer_new";
     }

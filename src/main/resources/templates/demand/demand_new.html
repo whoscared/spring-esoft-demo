@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="post" th:action="@{/demand}">
+
+    <label for="typeOfRealEstate">Choose object</label>
+    <select id="typeOfRealEstate" th:field="${demand.typeOfRealEstate}">
+        <option th:each="temp_type : ${T(whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate).values()}"
+                th:value="${temp_type}"
+                th:text="${temp_type.toString()}">type
+        </option>
+    </select>
+
+    <br/>
+
+    <label for="client">Choose client</label>
+    <select id="client" th:field="${demand.client}">
+        <option th:each="temp_client : ${clientList}"
+                th:value="${temp_client.getId()}"
+                th:text="${temp_client.getLastname()} + ' ' + ${temp_client.getFirstname()} + ' ' + ${temp_client.getEmail()}">type
+        </option>
+    </select>
+
+    <br/>
+
+    <label for="realtor">Choose realtor</label>
+    <select id="realtor" th:field="${demand.realtor}">
+        <option th:each="temp_realtor : ${realtorList}"
+                th:value="${temp_realtor.getId()}"
+                th:text="${temp_realtor.getLastname()} + ' ' + ${temp_realtor.getFirstname()}">type
+        </option>
+    </select>
+
+    <br/>
+
+    <label for="city">City</label>
+    <input type="text" th:field="${address.city}" id="city"/>
+
+    <br/>
+
+    <label for="street">Street</label>
+    <input type="text" th:field="${address.street}" id="street"/>
+
+    <br/>
+
+    <label for="house">House</label>
+    <input type="text" th:field="${address.house}" id="house"/>
+
+    <br/>
+
+    <label for="apartmentNumber">Apartment Number</label>
+    <input type="text" th:field="${address.apartmentNumber}" id="apartmentNumber"/>
+
+    <br/>
+
+    <label for="latitude">Latitude</label>
+    <input type="text" th:field="${address.latitude}" id="latitude"/>
+
+    <br/>
+
+    <label for="longitude">Longitude</label>
+    <input type="text" th:field="${address.longitude}" id="longitude"/>
+
+    <br/>
+
+    <label for="minArea">Min Area</label>
+    <input type="text" th:field="${demand.minArea}" id="minArea"/>
+
+    <br/>
+
+    <label for="maxArea">Max Area</label>
+    <input type="text" th:field="${demand.maxArea}" id="maxArea"/>
+
+    <br/>
+
+    <label for="minRoom">Min Room</label>
+    <input type="text" th:field="${demand.minRoom}" id="minRoom"/>
+
+    <br/>
+
+    <label for="maxRoom">Max Room</label>
+    <input type="text" th:field="${demand.minRoom}" id="maxRoom"/>
+
+    <br/>
+
+    <label for="minFloat">Min Float</label>
+    <input type="text" th:field="${demand.minFloat}" id="minFloat"/>
+
+    <br/>
+
+    <label for="maxFloat">Max Float</label>
+    <input type="text" th:field="${demand.minFloat}" id="maxFloat"/>
+
+</form>
+
+</body>
+</html>
