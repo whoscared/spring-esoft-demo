@@ -31,6 +31,10 @@ public class OfferService {
         return offerRepository.findByRealtor(realtor);
     }
 
+    public List<Offer> findWithoutDeal (){
+        return  findAll().stream().filter(x->x.getDeal() == null).toList();
+    }
+
     public void save(Offer offer){
         offerRepository.save(offer);
     }

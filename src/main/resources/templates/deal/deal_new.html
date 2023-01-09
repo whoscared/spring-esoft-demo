@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="post" th:action="@{/deal}" th:object="${deal}">
+    <label for="offer">Choose offer</label>
+    <select id="offer" th:field="*{offer}">
+        <option th:each="temp_offer : ${offerList}"
+                th:value="${temp_offer.getId()}"
+                th:text="${temp_offer.toString()}">type
+        </option>
+    </select>
+    <br>
+    <label for="demand">Choose demand</label>
+    <select id="demand" th:field="*{demand}">
+        <option th:each="temp_demand : ${demandList}"
+                th:value="${temp_demand.getId()}"
+                th:text="${temp_demand.toString()}">type
+        </option>
+    </select>
+    <br>
+
+    <input type="submit" value="Go"/>
+</form>
+
+</body>
+</html>

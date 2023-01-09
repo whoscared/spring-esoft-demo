@@ -51,6 +51,10 @@ public class ClientService {
         return allClients().stream().filter(x -> x.getOffer() == null).toList();
     }
 
+//    public List<Client> findWithoutDeal () {
+//        return allClients().stream().filter(x-> x.getOffer().getDeal() == null && x.getDemand().getDeal() == null).toList();
+//    }
+
     public void update(long id, Client client) {
         client.setId(id);
         clientRepository.save(client);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Offer:</h1>
+<p th:text="${deal.getOffer().toString()}"></p>
+<h1>Demand:</h1>
+<p th:text="${deal.getDemand().toString()}"></p>
+
+<p> Price for salesman: </p>
+<p th:text="${dedAndComm.getPriceForSalesman()}"></p>
+<br>
+<p> Price for customer: </p>
+<p th:text="${dedAndComm.getPriceForCustomer()}"></p>
+<br>
+<p> Deduction for realtor salesman: </p>
+<p th:text="${dedAndComm.getCommissionForRealtorSalesman()}"></p>
+<br>
+<p> Deduction for realtor customer: </p>
+<p th:text="${dedAndComm.getCommissionForRealtorCustomer()}"></p>
+<br>
+<p> Deduction for company: </p>
+<p th:text="${dedAndComm.getDeductionsCompany()}"></p>
+
+</body>
+</html>

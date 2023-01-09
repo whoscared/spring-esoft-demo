@@ -29,7 +29,8 @@ public class Offer {
     @Column(name = "price")
     private int price;
 
-
+    @OneToOne(mappedBy = "offer")
+    private Deal deal;
 
     public Offer() {
     }
@@ -72,6 +73,14 @@ public class Offer {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Deal getDeal() {
+        return deal;
+    }
+
+    public void setDeal(Deal deal) {
+        this.deal = deal;
     }
 
     @Override

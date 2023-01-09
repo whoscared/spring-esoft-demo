@@ -37,6 +37,8 @@ public class Demand {
     @Column(name = "max_float")
     private int maxFloat;
 
+    @OneToOne(mappedBy = "demand")
+    private Deal deal;
 
     public Demand(){}
 
@@ -126,6 +128,14 @@ public class Demand {
 
     public void setMaxFloat(int maxFloat) {
         this.maxFloat = maxFloat;
+    }
+
+    public Deal getDeal() {
+        return deal;
+    }
+
+    public void setDeal(Deal deal) {
+        this.deal = deal;
     }
 
     @Override

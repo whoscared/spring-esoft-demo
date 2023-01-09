@@ -24,4 +24,8 @@ public class DemandService {
     public List<Demand> findAll (){
         return demandRepository.findAll();
     }
+
+    public List<Demand> findWithoutDeal () {
+        return findAll().stream().filter(x->x.getDeal() == null).toList();
+    }
 }
