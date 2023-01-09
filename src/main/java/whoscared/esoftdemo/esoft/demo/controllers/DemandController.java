@@ -32,6 +32,12 @@ public class DemandController {
         this.realtorService = realtorService;
     }
 
+    @GetMapping()
+    public String mainDemand (Model model){
+        model.addAttribute("demandList", demandService.findAll());
+        return "demand/demand_main";
+    }
+
     @GetMapping("/new")
     public String newDemand (Model model){
         model.addAttribute("clientList", clientService.allClients());

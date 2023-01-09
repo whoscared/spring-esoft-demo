@@ -16,6 +16,8 @@
     </option>
   </select>
 
+  <br/>
+
   <label for="realtor">Choose realtor</label>
   <select id="realtor" th:field="*{realtor}">
     <option th:each="temp_realtor : ${realtorList}"
@@ -24,13 +26,17 @@
     </option>
   </select>
 
+  <br/>
+
   <label for="realEstate">Choose realEstateList</label>
   <select id="realEstate" th:field="*{realEstate}">
     <option th:each="temp_realEstate : ${realEstateList}"
             th:value="${temp_realEstate.getId()}"
-            th:text="${temp_realEstate.getTypeOfRealEstate().toString()} + ' ' + ${temp_realEstate.getStreet()} + ', ' + ${temp_realEstate.getHouse()}">type
+            th:text="${temp_realEstate.getTypeOfRealEstate().toString()} + ' ' + ${temp_realEstate.getAddress().getStreet()} + ', ' + ${temp_realEstate.getAddress().getHouse()}">type
     </option>
   </select>
+
+  <br/>
 
   <label for="price">Price</label>
   <input type="text" th:field="*{price}" id="price"/>

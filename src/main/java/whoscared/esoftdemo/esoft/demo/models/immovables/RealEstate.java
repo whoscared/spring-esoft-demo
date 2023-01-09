@@ -176,4 +176,12 @@ public class RealEstate {
     public void setArea(Integer area) {
         this.area = area;
     }
+
+    @Override
+    public String toString() {
+        return "RealEstate{" +
+                "typeOfRealEstate=" + typeOfRealEstate +
+                ", address =" + address.toString() +
+                '}';
+    }
 }

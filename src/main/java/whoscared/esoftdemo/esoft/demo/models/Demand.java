@@ -37,6 +37,7 @@ public class Demand {
     @Column(name = "max_float")
     private int maxFloat;
 
+
     public Demand(){}
 
     public long getId() {
@@ -131,7 +132,7 @@ public class Demand {
     public String toString() {
         return "Demand{" +
                 "typeOfRealEstate=" + typeOfRealEstate +
-                ", address=" + address +
+                ", address=" + address.toString() +
                 ", minArea=" + minArea +
                 ", maxArea=" + maxArea +
                 ", minRoom=" + minRoom +

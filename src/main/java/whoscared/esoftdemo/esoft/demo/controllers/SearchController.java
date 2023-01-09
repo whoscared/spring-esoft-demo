@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import whoscared.esoftdemo.esoft.demo.models.Address;
 import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 import whoscared.esoftdemo.esoft.demo.models.people.Person;
 import whoscared.esoftdemo.esoft.demo.search.SearchClientsAndRealtors;
@@ -18,6 +19,8 @@ public class SearchController {
 
     private final SearchClientsAndRealtors searchClientsAndRealtors;
     private final SearchRealEstate searchRealEstate;
+
+
 
     @Autowired
     public SearchController(SearchClientsAndRealtors searchClientsAndRealtors, SearchRealEstate searchRealEstate) {
@@ -41,7 +44,9 @@ public class SearchController {
 
     @PostMapping("/real_estate")
     public String searchRealEstate(Model model,
-                                   @ModelAttribute("realEstate") RealEstate realEstate) {
+                                   @ModelAttribute("realEstate") RealEstate realEstate,
+                                   @ModelAttribute("address") Address address) {
+        realEstate.setAddress(address);
         List<RealEstate> resultOfSearch = searchRealEstate.searchRealEstates(realEstate);
         model.addAttribute("objectsList", resultOfSearch);
         return "search/search_real_estate";
@@ -50,6 +55,7 @@ public class SearchController {
     @GetMapping("/real_estate")
     public String searchRealEstate(Model model) {
         model.addAttribute("realEstate", new RealEstate());
+        model.addAttribute("address", new Address());
         return "search/search_real_estate";
     }
 

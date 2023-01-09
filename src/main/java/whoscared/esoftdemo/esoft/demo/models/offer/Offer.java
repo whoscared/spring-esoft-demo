@@ -1,6 +1,7 @@
 package whoscared.esoftdemo.esoft.demo.models.offer;
 
 import jakarta.persistence.*;
+import whoscared.esoftdemo.esoft.demo.models.Deal;
 import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
@@ -27,6 +28,8 @@ public class Offer {
 
     @Column(name = "price")
     private int price;
+
+
 
     public Offer() {
     }
@@ -74,7 +77,12 @@ public class Offer {
     @Override
     public String toString() {
         return "Offer{" +
-                "realEstate=" + realEstate +
+                ", client firstname=" + client.getFirstname() +
+                ", client lastname=" + client.getLastname() +
+                ", client email=" + client.getEmail() +
+                ", realtor firstname=" + realtor.getFirstname() +
+                ", realtor lastname=" + realtor.getLastname() +
+                ", realEstate=" + realEstate.toString() +
                 ", price=" + price +
                 '}';
     }

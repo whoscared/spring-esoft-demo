@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
 import whoscared.esoftdemo.esoft.demo.repositories.DemandRepository;
 
+import java.util.List;
+
 @Service
 public class DemandService {
 
@@ -17,5 +19,9 @@ public class DemandService {
 
     public void save (Demand demand){
         demandRepository.save(demand);
+    }
+
+    public List<Demand> findAll (){
+        return demandRepository.findAll();
     }
 }
