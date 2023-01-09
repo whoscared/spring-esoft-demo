@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "client")
@@ -34,17 +36,17 @@ public class Client extends Person {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "client")
-    private Offer offer;
+    @OneToMany(mappedBy = "client")
+    private List<Offer> offer;
 
-    @OneToOne(mappedBy = "client")
-    private Demand demand;
+    @OneToMany(mappedBy = "client")
+    private List<Demand> demand;
 
-    public Demand getDemand() {
+    public List<Demand> getDemand() {
         return demand;
     }
 
-    public void setDemand(Demand demand) {
+    public void setDemand(List<Demand> demand) {
         this.demand = demand;
     }
 
@@ -96,11 +98,11 @@ public class Client extends Person {
         this.email = email;
     }
 
-    public Offer getOffer() {
+    public List<Offer> getOffer() {
         return offer;
     }
 
-    public void setOffer(Offer offer) {
+    public void setOffer(List<Offer> offer) {
         this.offer = offer;
     }
 }

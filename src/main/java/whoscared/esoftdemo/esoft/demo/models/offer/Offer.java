@@ -14,11 +14,11 @@ public class Offer {
     @Column(name = "id")
     private long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "id")
     private Client client;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "realtor", referencedColumnName = "id")
     private Realtor realtor;
 

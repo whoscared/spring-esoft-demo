@@ -6,9 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.Deal;
 import whoscared.esoftdemo.esoft.demo.models.DeductionsAndCommissions;
+import whoscared.esoftdemo.esoft.demo.models.Demand;
+import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 import whoscared.esoftdemo.esoft.demo.services.DealService;
 import whoscared.esoftdemo.esoft.demo.services.DemandService;
 import whoscared.esoftdemo.esoft.demo.services.OfferService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/deal")
@@ -52,5 +56,26 @@ public class DealController {
         model.addAttribute("deal", currentDeal);
         model.addAttribute("dedAndComm", new DeductionsAndCommissions(currentDeal));
         return "deal/deal_id";
+    }
+
+    @GetMapping("/search")
+    public String search (Model model){
+        model.addAttribute("deal", new Deal());
+        model.addAttribute("demand", new Demand());
+        model.addAttribute("demandList", demandService.findWithoutDeal());
+        model.addAttribute("search", false);
+        return "deal/deal_search";
+    }
+
+    @PostMapping("/search")
+    public String searchByDemand (@ModelAttribute(name = "deal")Deal deal,
+                                  Model model){
+        //Deal temp_deal = new Deal();
+        //temp_deal.setDemand(demandService.findById(demand.getId()));
+        List<Offer> goodOffer = offerService.findByDemand(deal.getDemand());
+        model.addAttribute("offerList", goodOffer);
+        model.addAttribute("search", true);
+        model.addAttribute("deal", deal);
+        return "deal/deal_search";
     }
 }

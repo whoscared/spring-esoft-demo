@@ -26,6 +26,9 @@ public class Address {
     @OneToOne(mappedBy = "address")
     private RealEstate realEstate;
 
+    @OneToOne(mappedBy = "address")
+    private Demand demand;
+
     public Address(){}
 
     public long getId() {

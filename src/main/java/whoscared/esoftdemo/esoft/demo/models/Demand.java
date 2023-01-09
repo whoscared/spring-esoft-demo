@@ -15,10 +15,10 @@ public class Demand {
     @Column(name = "type_of_real_estate")
     @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "id")
     private Client client;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "realtor", referencedColumnName = "id")
     private Realtor realtor;
     @OneToOne
@@ -137,6 +137,8 @@ public class Demand {
     public void setDeal(Deal deal) {
         this.deal = deal;
     }
+
+
 
     @Override
     public String toString() {

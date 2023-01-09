@@ -34,6 +34,7 @@ public class DemandController {
 
     @GetMapping()
     public String mainDemand (Model model){
+        demandService.findAll();
         model.addAttribute("demandList", demandService.findAll());
         return "demand/demand_main";
     }
