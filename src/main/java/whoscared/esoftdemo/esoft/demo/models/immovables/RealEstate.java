@@ -1,18 +1,16 @@
 package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Address;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
 
 @Entity
 @Table(name = "real_estate")
 public class RealEstate {
-    //добавить предложение и добавить предложение в таблицы данных моделей в бд как столбец
-    // удаление объекта связанного с приложением невозможно
-    //предложение - отдельная таблица, с которой связаны три таблицы типов объектов и таблицы клиентов и риэлторов
-    //организовать поиск в заданных координатах
-    //добавить валидацию объектов (координаты)
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,29 +19,20 @@ public class RealEstate {
     @Column(name = "type_of_real_estate")
     @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
-//    @Column(name = "city")
-//    private String city;
-//    @Column(name = "street")
-//    private String street;
-//    @Column(name = "house")
-//    private String house;
-//    @Column(name = "apartment_number")
-//    private String apartmentNumber;
-//    @Column(name = "latitude")
-//    private Integer latitude;
-//    @Column(name = "longitude")
-//    private Integer longitude;
 
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
+    @Min(value = 1, message = "Floor must be greater than 0")
     @Column(name = "floor")
     private Integer floor;
 
+    @Min(value = 1, message = "Count of rooms must be greater than 0")
     @Column(name = "rooms")
     private Integer rooms;
 
+    @Min(value = 1, message = "Area must be greater than 0")
     @Column(name = "area")
     private Integer area;
 
@@ -70,53 +59,6 @@ public class RealEstate {
         this.typeOfRealEstate = typeOfRealEstate;
     }
 
-//    public String getCity() {
-//        return city;
-//    }
-//
-//    public void setCity(String city) {
-//        this.city = city;
-//    }
-//
-//    public String getStreet() {
-//        return street;
-//    }
-//
-//    public void setStreet(String street) {
-//        this.street = street;
-//    }
-//
-//    public String getHouse() {
-//        return house;
-//    }
-//
-//    public void setHouse(String house) {
-//        this.house = house;
-//    }
-//
-//    public String getApartmentNumber() {
-//        return apartmentNumber;
-//    }
-//
-//    public void setApartmentNumber(String apartmentNumber) {
-//        this.apartmentNumber = apartmentNumber;
-//    }
-//
-//    public Integer getLatitude() {
-//        return latitude;
-//    }
-//
-//    public void setLatitude(Integer latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public Integer getLongitude() {
-//        return longitude;
-//    }
-//
-//    public void setLongitude(Integer longitude) {
-//        this.longitude = longitude;
-//    }
 
     public Integer getFloor() {
         return floor;

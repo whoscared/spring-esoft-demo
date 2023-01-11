@@ -38,26 +38,32 @@
 
     <label for="latitude">Latitude</label>
     <input type="text" th:field="${address.latitude}" id="latitude"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('address.latitude')}" th:errors="*{address.latitude}">error floor</div>
 
     <br/>
 
     <label for="longitude">Longitude</label>
     <input type="text" th:field="${address.longitude}" id="longitude"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('address.longitude')}" th:errors="*{address.longitude}">error floor</div>
+
 
     <br/>
 
     <label for="floors">Floor</label>
     <input type="text" th:field="${realEstate.floor}" id="floors"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('realEstate.floor')}" th:errors="*{realEstate.floor}">error floor</div>
 
     <br/>
 
     <label for="rooms">Rooms</label>
     <input type="text" th:field="${realEstate.rooms}" id="rooms"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('realEstate.rooms')}" th:errors="*{realEstate.rooms}">error room</div>
 
     <br/>
 
     <label for="area">Area</label>
     <input type="text" th:field="${realEstate.area}" id="area"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('realEstate.area')}" th:errors="*{realEstate.area}">error area</div>
 
     <br/>
 

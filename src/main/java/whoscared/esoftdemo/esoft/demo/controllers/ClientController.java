@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.services.ClientService;
 import whoscared.esoftdemo.esoft.demo.services.DealService;
-import whoscared.esoftdemo.esoft.demo.utils.ClientValidator;
+import whoscared.esoftdemo.esoft.demo.utils.validator.ClientValidator;
 
 @Controller
 @RequestMapping("/client")

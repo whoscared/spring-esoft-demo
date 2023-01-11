@@ -30,12 +30,16 @@ public class DealService {
 
     public List<Deal> findByClientId (Long clientId) {
         return findAll().stream()
+                .filter(x->x.getOffer() != null && x.getOffer().getClient() !=null)
+                .filter(x->x.getDemand() != null && x.getDemand().getClient() !=null)
                 .filter(x -> x.getOffer().getClient().getId() == clientId
                 || x.getDemand().getClient().getId() == clientId).toList();
     }
 
     public List<Deal> findByRealtorId (Long realtorId) {
         return findAll().stream()
+                .filter(x->x.getOffer() != null && x.getOffer().getRealtor() !=null)
+                .filter(x->x.getDemand() != null && x.getDemand().getRealtor() !=null)
                 .filter(x -> x.getOffer().getRealtor().getId() == realtorId
                         || x.getDemand().getRealtor().getId() == realtorId).toList();
     }

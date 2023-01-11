@@ -1,4 +1,4 @@
-package whoscared.esoftdemo.esoft.demo.utils;
+package whoscared.esoftdemo.esoft.demo.utils.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

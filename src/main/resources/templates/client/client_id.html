@@ -10,33 +10,33 @@
 <p th:text="'Phone: ' +  ${client.getPhone()}">Phone</p>
 <p th:text="'Email: ' +  ${client.getEmail()}">Email</p>
 
-<div th:if="${offers == null}">
+<div th:if="${offers.isEmpty()}">
     <p>Client has no one offer</p>
 </div>
-<div th:if="${offers != null}">
+<div th:if="${!offers.isEmpty()}">
     <div th:each="temp_offer : ${offers}">
         <p th:text="${temp_offer.toString()}">Offer</p>
     </div>
 </div>
 
-<div th:if="${demands == null}">
+<div th:if="${demands.isEmpty()}">
     <p>Client has no one demand</p>
 </div>
-<div th:if="${demands != null}">
+<div th:if="${!demands.isEmpty()}">
     <div th:each="temp_demand : ${demands}">
         <p th:text="${temp_demand.toString()}">Demand</p>
     </div>
 </div>
 
-<div th:if="${deals == null}">
+<div th:if="${deals.isEmpty()}">
     <p>Client does not particular in any deal</p>
 </div>
-<div th:if="${deals != null}">
+<div th:if="${!deals.isEmpty()}">
     <div th:each="temp_deal : ${deals}">
         <p th:text="${temp_deal.toString()}">Deal</p>
     </div>
 </div>
 
-<a th:href="@{/client/{id}/edit(id = ${client.getId()})}">Edit client data</a>
+<a th:href="@{/client/{id}(id = ${client.getId()})/edit}">Edit client data</a>
 </body>
 </html>

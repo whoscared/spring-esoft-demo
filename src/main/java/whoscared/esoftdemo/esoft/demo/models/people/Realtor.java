@@ -2,6 +2,7 @@ package whoscared.esoftdemo.esoft.demo.models.people;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
@@ -17,23 +18,24 @@ public class Realtor extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //@NotEmpty(message = "Lastname should not be empty")
-    //@Max(value = 50, message = "Lastname should not be larger than 50 symbols")
+    @NotEmpty(message = "Lastname should not be empty")
+    @Size(max = 50, message = "Lastname should not be larger than 50 symbols")
     @Column(name = "lastname")
     private String lastname;
 
-    //@NotEmpty(message = "Firstname should not be empty")
-    //@Max(value = 50, message = "Firstname should not be larger than 50 symbols")
+    @NotEmpty(message = "Firstname should not be empty")
+    @Size(max = 50, message = "Firstname should not be larger than 50 symbols")
     @Column(name = "firstname")
     private String firstname;
 
-    //@NotEmpty(message = "Patronymic should not be empty")
-    //@Max(value = 50, message = "Patronymic should not be larger than 50 symbols")
+    @NotEmpty(message = "Patronymic should not be empty")
+    @Size(max = 50, message = "Patronymic should not be larger than 50 symbols")
     @Column(name = "patronymic")
     private String patronymic;
 
-    //@NotEmpty(message = "Share Of Commission should not be empty")
-    //@Size(max = 100, message = "Share Of Commission must be between 0 and 100")
+
+    @Min(value = 0, message = "Share Of Commission must be between 0 and 100")
+    @Max(value = 100, message = "Share Of Commission must be between 0 and 100")
     @Column(name = "share_of_commission")
     private int shareOfCommission;
 

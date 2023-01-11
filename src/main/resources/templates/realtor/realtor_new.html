@@ -10,21 +10,25 @@
 
     <label for="lastname">Lastname</label>
     <input type="text" th:field="*{lastname}" id="lastname"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">error lastname</div>
 
     <br/>
 
     <label for="firstname">Firstname</label>
     <input type="text" th:field="*{firstname}" id="firstname"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">error firstname</div>
 
     <br/>
 
     <label for="patronymic">Patronymic</label>
     <input type="text" th:field="*{patronymic}" id="patronymic"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}">error patronymic</div>
 
     <br/>
 
     <label for="shareOfCommission">Share Of Commission</label>
     <input type="text" th:field="*{shareOfCommission}" id="shareOfCommission"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('shareOfCommission')}" th:errors="*{shareOfCommission}">error shareOfCommission</div>
 
     <br/>
 

@@ -10,10 +10,6 @@
 <p th:text="'Phone: ' +  ${client.getPhone()}">Phone</p>
 <p th:text="'Email: ' +  ${client.getEmail()}">Email</p>
 
-<div th:if="${error}">
-    <p style="color: brown">"You must fill in one of the fields: email or number"</p>
-</div>
-
 <form th:method="POST" th:action="@{/client/{id}(id = ${client.getId()})}" th:object="${client}">
 
     <label for="lastname">Lastname</label>

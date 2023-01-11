@@ -1,14 +1,13 @@
 package whoscared.esoftdemo.esoft.demo.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.Address;
 import whoscared.esoftdemo.esoft.demo.models.immovables.*;
-//import whoscared.esoftdemo.esoft.demo.services.ApartmentService;
-//import whoscared.esoftdemo.esoft.demo.services.HouseService;
-//import whoscared.esoftdemo.esoft.demo.services.LandService;
 import whoscared.esoftdemo.esoft.demo.services.AddressService;
 import whoscared.esoftdemo.esoft.demo.services.RealEstateService;
 
@@ -16,13 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 @Controller
 @RequestMapping("/real_estate")
 public class RealEstateController {
-//    private final ApartmentService apartmentService;
-//    private final HouseService houseService;
-//    private final LandService landService;
 
     @Autowired
     public RealEstateController(RealEstateService realEstateService, AddressService addressService) {
@@ -33,23 +28,12 @@ public class RealEstateController {
     private final RealEstateService realEstateService;
     private final AddressService addressService;
 
-//    @Autowired
-//    public RealEstateController(ApartmentService apartmentService, HouseService houseService, LandService landService, RealEstateService realEstateService) {
-//        this.apartmentService = apartmentService;
-//        this.houseService = houseService;
-//        this.landService = landService;
-//        this.realEstateService = realEstateService;
-//    }
-
 
     @GetMapping()
     public String main(Model model) {
         model.addAttribute("realEstate", new RealEstate());
         model.addAttribute("address", new Address());
         List<RealEstate> allObjects = new ArrayList<>(realEstateService.findAll());
-//        allObjects.addAll(apartmentService.findAll());
-//        allObjects.addAll(houseService.findAll());
-//        allObjects.addAll(landService.findAll());
         model.addAttribute("allObjects", allObjects);
         model.addAttribute("filter", false);
         return "real_estate/real_estate_main";
@@ -98,8 +82,13 @@ public class RealEstateController {
     }
 
     @PostMapping()
-    public String addRealEstate(@ModelAttribute("realEstate") RealEstate realEstate,
-                                @ModelAttribute("address") Address address) {
+    public String addRealEstate(@ModelAttribute("realEstate") @Valid RealEstate realEstate,
+                                BindingResult bindingResult,
+                                @ModelAttribute("address") @Valid Address address,
+                                BindingResult bindingResultAddress) {
+        if (bindingResult.hasErrors() || bindingResultAddress.hasErrors()){
+            return "real_estate/real_estate_new";
+        }
         realEstate.toRealEstateObject(realEstate.getTypeOfRealEstate());
         addressService.save(address);
         realEstate.setAddress(address);
