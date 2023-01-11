@@ -27,9 +27,7 @@ public class ClientValidator implements Validator {
 
         if (client.getEmail().isEmpty() && client.getPhone().isEmpty()) {
             errors.rejectValue("email", "", "You must fill in one of the fields: email or number");
-        }
-
-        else if (!client.getEmail().isEmpty() && clientService.findByEmail(client.getEmail()) != null) {
+        } else if (!client.getEmail().isEmpty() && clientService.findByEmail(client.getEmail()) != null) {
             errors.rejectValue("email", "", "Client with this email already exist");
         }
     }

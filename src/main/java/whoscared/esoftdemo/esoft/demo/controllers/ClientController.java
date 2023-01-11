@@ -17,6 +17,7 @@ public class ClientController {
     private final ClientService clientService;
     private final ClientValidator clientValidator;
     private final DealService dealService;
+
     @Autowired
     public ClientController(ClientService clientService, ClientValidator clientValidator, DealService dealService) {
         this.clientService = clientService;
@@ -100,7 +101,7 @@ public class ClientController {
             model.addAttribute("error", "You have not to delete this client!(This client has a demand)");
             return "client/client_id";
         }
-        if (dealService.findByClientId(id) != null){
+        if (dealService.findByClientId(id) != null) {
             model.addAttribute("error", "You have not to delete this client!(This client predicate in deal)");
             return "client/client_id";
         }

@@ -40,6 +40,7 @@ public class OfferService {
     public List<Offer> findByDemand(Demand demand) {
         List<Offer> allOffer = findAll();
         allOffer = allOffer.stream().filter(x -> x.getRealEstate().getTypeOfRealEstate() == demand.getTypeOfRealEstate()).toList();
+
         allOffer = allOffer.stream()
                 .filter(x -> x.getRealEstate().getAddress().getCity() == null
                         || x.getRealEstate().getAddress().getCity().equals(demand.getAddress().getCity()))
@@ -47,10 +48,17 @@ public class OfferService {
                         || x.getRealEstate().getAddress().getStreet().equals(demand.getAddress().getStreet()))
                 .filter(x -> x.getRealEstate().getAddress().getHouse() == null
                         || x.getRealEstate().getAddress().getHouse().equals(demand.getAddress().getHouse()))
-                .filter(x -> x.getRealEstate().getArea() >= demand.getMinArea() && x.getRealEstate().getArea() <= demand.getMaxArea())
-                .filter(x -> x.getRealEstate().getRooms() >= demand.getMinRoom() && x.getRealEstate().getRooms() <= demand.getMaxRoom())
-                .filter(x -> x.getRealEstate().getFloor() >= demand.getMinFloat() && x.getRealEstate().getFloor() <= demand.getMaxFloat())
+
+                .filter(x -> demand.getMinArea() == null || (x.getRealEstate().getArea() != null && x.getRealEstate().getArea() >= demand.getMinArea()))
+                .filter(x -> demand.getMaxArea() == null || (x.getRealEstate().getArea() != null && x.getRealEstate().getArea() <= demand.getMaxArea()))
+
+                .filter(x -> demand.getMinRoom() == null || (x.getRealEstate().getRooms() != null && x.getRealEstate().getRooms() >= demand.getMinRoom()))
+                .filter(x -> demand.getMaxRoom() == null || (x.getRealEstate().getRooms() != null && x.getRealEstate().getRooms() <= demand.getMaxRoom()))
+
+                .filter(x -> demand.getMinFloat() == null || (x.getRealEstate().getFloor() != null && x.getRealEstate().getFloor() >= demand.getMinFloat()))
+                .filter(x -> demand.getMaxFloat() == null || (x.getRealEstate().getFloor() != null && x.getRealEstate().getFloor() <= demand.getMaxFloat()))
                 .toList();
+
         return allOffer;
     }
 

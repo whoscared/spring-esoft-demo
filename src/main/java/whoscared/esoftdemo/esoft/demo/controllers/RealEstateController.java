@@ -86,10 +86,9 @@ public class RealEstateController {
                                 BindingResult bindingResult,
                                 @ModelAttribute("address") @Valid Address address,
                                 BindingResult bindingResultAddress) {
-        if (bindingResult.hasErrors() || bindingResultAddress.hasErrors()){
+        if (bindingResult.hasErrors() || bindingResultAddress.hasErrors()) {
             return "real_estate/real_estate_new";
         }
-        realEstate.toRealEstateObject(realEstate.getTypeOfRealEstate());
         addressService.save(address);
         realEstate.setAddress(address);
         realEstateService.save(realEstate);

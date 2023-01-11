@@ -84,7 +84,7 @@ public class RealEstate {
         this.area = area;
     }
 
-    public void toRealEstateObject(TypeOfRealEstate typeOfRealEstate) {
+    public void toRealEstateObject() {
         if (typeOfRealEstate == TypeOfRealEstate.LAND) {
             floor = null;
             rooms = null;

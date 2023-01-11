@@ -3,7 +3,6 @@ package whoscared.esoftdemo.esoft.demo.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 
 @Entity
@@ -21,12 +20,12 @@ public class Address {
     private String house;
     @Column(name = "apartment_number")
     private String apartmentNumber;
-    @Min(value = -90,message = "Latitude should be between -90 and 90")
-    @Max(value = 90,message = "Latitude should be between -90 and 90")
+    @Min(value = -90, message = "Latitude should be between -90 and 90")
+    @Max(value = 90, message = "Latitude should be between -90 and 90")
     @Column(name = "latitude")
     private Integer latitude;
-    @Min(value = -180,message = "Longitude should be between -180 and 180")
-    @Max(value = 180,message = "Longitude should be between -180 and 180")
+    @Min(value = -180, message = "Longitude should be between -180 and 180")
+    @Max(value = 180, message = "Longitude should be between -180 and 180")
     @Column(name = "longitude")
     private Integer longitude;
 

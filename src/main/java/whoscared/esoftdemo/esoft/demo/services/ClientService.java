@@ -46,7 +46,7 @@ public class ClientService {
         return clientRepository.findById(id).orElse(null);
     }
 
-    public List<Client> findWithoutOffer () {
+    public List<Client> findWithoutOffer() {
         //List<Client> allClients = allClients().stream().filter(x -> x.getOffer() == null).toList();
         return allClients().stream().filter(x -> x.getOffer() == null).toList();
     }
@@ -59,7 +59,6 @@ public class ClientService {
         client.setId(id);
         clientRepository.save(client);
     }
-
 
 
     public void delete(long id) {

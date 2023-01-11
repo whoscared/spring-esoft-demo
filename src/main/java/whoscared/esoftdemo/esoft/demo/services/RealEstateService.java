@@ -23,10 +23,6 @@ public class RealEstateService {
         return realEstateRepository.findAll();
     }
 
-//    public List<RealEstate> findByCityAndStreet(String city, String street) {
-//        return realEstateRepository.findByCityAndStreet(city, street);
-//    }
-
     public List<RealEstate> findByTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate) {
         return realEstateRepository.findByTypeOfRealEstate(typeOfRealEstate);
     }
@@ -36,6 +32,7 @@ public class RealEstateService {
     }
 
     public void save(RealEstate realEstate) {
+        realEstate.toRealEstateObject();
         realEstateRepository.save(realEstate);
     }
 }

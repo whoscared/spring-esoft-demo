@@ -15,6 +15,7 @@
                 th:text="${temp_type.toString()}">type
         </option>
     </select>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.typeOfRealEstate')}" th:errors="*{demand.typeOfRealEstate}">error type of real estate</div>
 
     <br/>
 
@@ -26,6 +27,8 @@
             type
         </option>
     </select>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.client')}" th:errors="*{demand.client}">error client</div>
+
 
     <br/>
 
@@ -36,6 +39,8 @@
                 th:text="${temp_realtor.getLastname()} + ' ' + ${temp_realtor.getFirstname()}">type
         </option>
     </select>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.realtor')}" th:errors="*{demand.realtor}">error realtor</div>
+
 
     <br/>
 
@@ -61,45 +66,57 @@
 
     <label for="latitude">Latitude</label>
     <input type="text" th:field="${address.latitude}" id="latitude"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('address.latitude')}" th:errors="*{address.latitude}">error latitude</div>
+
 
     <br/>
 
     <label for="longitude">Longitude</label>
     <input type="text" th:field="${address.longitude}" id="longitude"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('address.longitude')}" th:errors="*{address.longitude}">error longitude</div>
 
     <br/>
 
     <label for="minArea">Min Area</label>
     <input type="text" th:field="${demand.minArea}" id="minArea"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.minArea')}" th:errors="*{demand.minArea}">error min float</div>
+
 
     <br/>
 
     <label for="maxArea">Max Area</label>
     <input type="text" th:field="${demand.maxArea}" id="maxArea"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.maxArea')}" th:errors="*{demand.maxArea}">error max area</div>
 
     <br/>
 
     <label for="minRoom">Min Room</label>
     <input type="text" th:field="${demand.minRoom}" id="minRoom"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.minRoom')}" th:errors="*{demand.minRoom}">error min float</div>
+
 
     <br/>
 
     <label for="maxRoom">Max Room</label>
     <input type="text" th:field="${demand.maxRoom}" id="maxRoom"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.maxRoom')}" th:errors="*{demand.maxRoom}">error max room</div>
 
     <br/>
 
     <label for="minFloat">Min Float</label>
     <input type="text" th:field="${demand.minFloat}" id="minFloat"/>
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.minFloat')}" th:errors="*{demand.minFloat}">error min float</div>
+
 
     <br/>
 
     <label for="maxFloat">Max Float</label>
     <input type="text" th:field="${demand.maxFloat}" id="maxFloat"/>
-
+    <div style="color:gray" th:if="${#fields.hasErrors('demand.maxFloat')}" th:errors="*{demand.maxFloat}">error max float</div>
 
     <input type="submit" value="Save"/>
 </form>
 
+<a href="/main">Back to menu</a>
 </body>
 </html>

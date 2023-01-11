@@ -1,6 +1,8 @@
 package whoscared.esoftdemo.esoft.demo.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
@@ -12,12 +14,15 @@ public class Demand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+
     @Column(name = "type_of_real_estate")
     @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
+
     @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "id")
     private Client client;
+    
     @ManyToOne
     @JoinColumn(name = "realtor", referencedColumnName = "id")
     private Realtor realtor;
@@ -25,17 +30,21 @@ public class Demand {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
     @Column(name = "min_area")
-    private int minArea;
+    @Min(value = 1, message = "Area must be greater than 0")
+    private Integer minArea;
     @Column(name = "max_area")
-    private int maxArea;
+    private Integer maxArea;
+    @Min(value = 1, message = "Room must be greater than 0")
     @Column(name = "min_room")
-    private int minRoom;
+    private Integer minRoom;
     @Column(name = "max_room")
-    private int maxRoom;
+    private Integer maxRoom;
+    @Min(value = 1, message = "Floor must be greater than 0")
     @Column(name = "min_float")
-    private int minFloat;
+    private Integer minFloat;
+
     @Column(name = "max_float")
-    private int maxFloat;
+    private Integer maxFloat;
 
     @OneToOne(mappedBy = "demand")
     private Deal deal;
@@ -83,51 +92,51 @@ public class Demand {
         this.address = address;
     }
 
-    public int getMinArea() {
+    public Integer getMinArea() {
         return minArea;
     }
 
-    public void setMinArea(int minArea) {
+    public void setMinArea(Integer minArea) {
         this.minArea = minArea;
     }
 
-    public int getMaxArea() {
+    public Integer getMaxArea() {
         return maxArea;
     }
 
-    public void setMaxArea(int maxArea) {
+    public void setMaxArea(Integer maxArea) {
         this.maxArea = maxArea;
     }
 
-    public int getMinRoom() {
+    public Integer getMinRoom() {
         return minRoom;
     }
 
-    public void setMinRoom(int minRoom) {
+    public void setMinRoom(Integer minRoom) {
         this.minRoom = minRoom;
     }
 
-    public int getMaxRoom() {
+    public Integer getMaxRoom() {
         return maxRoom;
     }
 
-    public void setMaxRoom(int maxRoom) {
+    public void setMaxRoom(Integer maxRoom) {
         this.maxRoom = maxRoom;
     }
 
-    public int getMinFloat() {
+    public Integer getMinFloat() {
         return minFloat;
     }
 
-    public void setMinFloat(int minFloat) {
+    public void setMinFloat(Integer minFloat) {
         this.minFloat = minFloat;
     }
 
-    public int getMaxFloat() {
+    public Integer getMaxFloat() {
         return maxFloat;
     }
 
-    public void setMaxFloat(int maxFloat) {
+    public void setMaxFloat(Integer maxFloat) {
         this.maxFloat = maxFloat;
     }
 
