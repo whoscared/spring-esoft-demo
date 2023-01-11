@@ -8,15 +8,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.services.ClientService;
+import whoscared.esoftdemo.esoft.demo.services.DealService;
+import whoscared.esoftdemo.esoft.demo.utils.ClientValidator;
 
 @Controller
 @RequestMapping("/client")
 public class ClientController {
     private final ClientService clientService;
-
+    private final ClientValidator clientValidator;
+    private final DealService dealService;
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, ClientValidator clientValidator, DealService dealService) {
         this.clientService = clientService;
+        this.clientValidator = clientValidator;
+        this.dealService = dealService;
     }
 
     @GetMapping("/main")
@@ -35,11 +40,9 @@ public class ClientController {
     public String addNewClient(@ModelAttribute("client") @Valid Client client,
                                BindingResult bindingResult,
                                Model model) {
+        clientValidator.validate(client, bindingResult);
+
         if (bindingResult.hasErrors()) {
-            return "client/client_new";
-        }
-        if (client.getEmail().isEmpty() && client.getPhone().isEmpty()) {
-            model.addAttribute("error", true);
             return "client/client_new";
         }
         clientService.save(client);
@@ -49,8 +52,12 @@ public class ClientController {
     @GetMapping("/{id}")
     public String oneClient(@PathVariable("id") long id,
                             Model model) {
-        model.addAttribute("client", clientService.findById(id));
-        model.addAttribute("offers", clientService.findById(id).getOffer());
+        Client current = clientService.findById(id);
+        model.addAttribute("client", current);
+        model.addAttribute("offers", current.getOffer());
+        model.addAttribute("demands", current.getDemand());
+        model.addAttribute("deals", dealService.findByClientId(id));
+
         return "client/client_id";
     }
 
@@ -64,7 +71,16 @@ public class ClientController {
     @PostMapping("/{id}")
     public String change(@PathVariable("id") long id,
                          @ModelAttribute("client") @Valid Client client,
-                         BindingResult bindingResult) {
+                         BindingResult bindingResult,
+                         Model model) {
+
+        Client current = clientService.findById(id);
+        model.addAttribute("offers", current.getOffer());
+        model.addAttribute("demands", current.getDemand());
+        model.addAttribute("deals", dealService.findByClientId(id));
+        model.addAttribute("client", current);
+
+        clientValidator.validate(client, bindingResult);
         if (bindingResult.hasErrors()) {
             return "client/client_edit";
         }
@@ -72,11 +88,20 @@ public class ClientController {
         return "client/client_id";
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id,
                          Model model) {
-        if (clientService.findById(id).getOffer() != null) {
+        Client current = clientService.findById(id);
+        if (current.getOffer() != null) {
             model.addAttribute("error", "You have not to delete this client!(This client has a offer)");
+            return "client/client_id";
+        }
+        if (current.getDemand() != null) {
+            model.addAttribute("error", "You have not to delete this client!(This client has a demand)");
+            return "client/client_id";
+        }
+        if (dealService.findByClientId(id) != null){
+            model.addAttribute("error", "You have not to delete this client!(This client predicate in deal)");
             return "client/client_id";
         }
         clientService.delete(id);

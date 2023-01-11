@@ -47,4 +47,13 @@ public class Deal {
     public void setDemand(Demand demand) {
         this.demand = demand;
     }
+
+    @Override
+    public String toString() {
+        return "Deal{" +
+                "id=" + id +
+                ", offer=" + offer.toString() +
+                ", demand=" + demand.toString() +
+                '}';
+    }
 }

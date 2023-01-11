@@ -27,4 +27,16 @@ public class DealService {
     public List<Deal> findAll() {
         return dealRepository.findAll();
     }
+
+    public List<Deal> findByClientId (Long clientId) {
+        return findAll().stream()
+                .filter(x -> x.getOffer().getClient().getId() == clientId
+                || x.getDemand().getClient().getId() == clientId).toList();
+    }
+
+    public List<Deal> findByRealtorId (Long realtorId) {
+        return findAll().stream()
+                .filter(x -> x.getOffer().getRealtor().getId() == realtorId
+                        || x.getDemand().getRealtor().getId() == realtorId).toList();
+    }
 }

@@ -1,10 +1,13 @@
 package whoscared.esoftdemo.esoft.demo.models.people;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
 import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.utils.annotation.Phone;
 
 import java.util.List;
 
@@ -17,22 +20,23 @@ public class Client extends Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "Lastname cannot be more than 50 characters")
     @Column(name = "lastname")
     private String lastname;
 
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "Firstname cannot be more than 50 characters")
     @Column(name = "firstname")
     private String firstname;
 
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "Patronymic cannot be more than 50 characters")
     @Column(name = "patronymic")
     private String patronymic;
 
+    @Phone(message = "Phone number entered incorrectly")
     @Column(name = "phone")
     private String phone;
 
-    @Email(message = "Email introduced not correct or user with this email already exist")
+    @Email(message = "Email entered incorrectly")
     @Column(name = "email")
     private String email;
 

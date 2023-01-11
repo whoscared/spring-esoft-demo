@@ -2,27 +2,41 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Client</title>
 </head>
 <body>
-<p th:text="'Full Name: ' + ${client.getLastname()} + ' ' + ${client.getFirstname()} + ' ' + ${client.getFirstname()} + ' ' + ${client.getPatronymic()}">
+<p th:text="'Full Name: ' + ${client.getLastname()} + ' ' + ${client.getFirstname()} + ' ' + ${client.getPatronymic()}">
     FullName</p>
 <p th:text="'Phone: ' +  ${client.getPhone()}">Phone</p>
 <p th:text="'Email: ' +  ${client.getEmail()}">Email</p>
 
-<div th:if="${!client.getOffer()}">
+<div th:if="${offers == null}">
     <p>Client has no one offer</p>
 </div>
-<div th:if="${client.getOffer()}">
-    <p th:text="${client.getOffer().toString()}">Offer</p>
+<div th:if="${offers != null}">
+    <div th:each="temp_offer : ${offers}">
+        <p th:text="${temp_offer.toString()}">Offer</p>
+    </div>
 </div>
 
-<div th:if="${!client.getDemand()}">
+<div th:if="${demands == null}">
     <p>Client has no one demand</p>
 </div>
-<div th:if="${client.getDemand()}">
-    <p th:text="${client.getDemand().toString()}">Offer</p>
+<div th:if="${demands != null}">
+    <div th:each="temp_demand : ${demands}">
+        <p th:text="${temp_demand.toString()}">Demand</p>
+    </div>
 </div>
 
+<div th:if="${deals == null}">
+    <p>Client does not particular in any deal</p>
+</div>
+<div th:if="${deals != null}">
+    <div th:each="temp_deal : ${deals}">
+        <p th:text="${temp_deal.toString()}">Deal</p>
+    </div>
+</div>
+
+<a th:href="@{/client/{id}/edit(id = ${client.getId()})}">Edit client data</a>
 </body>
 </html>
