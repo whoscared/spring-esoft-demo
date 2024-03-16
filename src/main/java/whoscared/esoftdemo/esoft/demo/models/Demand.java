@@ -7,6 +7,7 @@ import whoscared.esoftdemo.esoft.demo.models.immovables.TypeOfRealEstate;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
 
+// потребность
 @Entity
 @Table(name = "demand")
 public class Demand {

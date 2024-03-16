@@ -1,4 +1,4 @@
-package whoscared.esoftdemo.esoft.demo.models.offer;
+package whoscared.esoftdemo.esoft.demo.models;
 
 import jakarta.persistence.*;
 import whoscared.esoftdemo.esoft.demo.models.Deal;
@@ -6,6 +6,7 @@ import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
 
+// предложение
 @Entity
 @Table
 public class Offer {

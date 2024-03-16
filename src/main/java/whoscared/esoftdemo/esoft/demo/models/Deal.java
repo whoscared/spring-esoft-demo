@@ -1,8 +1,6 @@
 package whoscared.esoftdemo.esoft.demo.models;
 
 import jakarta.persistence.*;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
-import whoscared.esoftdemo.esoft.demo.models.people.Client;
 
 @Entity
 @Table(name = "deal")

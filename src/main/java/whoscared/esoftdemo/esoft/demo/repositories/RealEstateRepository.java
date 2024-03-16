@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface RealEstateRepository extends JpaRepository<RealEstate, Long> {
-    //List<RealEstate> findByCityAndStreet (String city, String Street);
+    List<RealEstate> findAll ();
     List<RealEstate> findByTypeOfRealEstate(TypeOfRealEstate typeOfRealEstate);
 }

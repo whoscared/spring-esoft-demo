@@ -22,6 +22,7 @@ public class SearchClientsAndRealtors extends SearchWithLevenshteinDistance {
 
     public List<Person> searchPersons(Person p) {
         List<Person> allPersons = new ArrayList<>();
+        //получаем всех людей отдельно из сервиса для клиентов и сервиса для риелторов
         allPersons.addAll(clientService.allClients());
         allPersons.addAll(realtorService.allRealtors());
 

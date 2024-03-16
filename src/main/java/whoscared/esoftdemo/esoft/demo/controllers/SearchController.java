@@ -27,6 +27,16 @@ public class SearchController {
         this.searchRealEstate = searchRealEstate;
     }
 
+    //передаем пустой класс обертку, который заполняется на стороне пользователя
+    @GetMapping()
+    public String search(Model model) {
+        model.addAttribute("person", new Person());
+        return "search/search_person";
+    }
+
+
+    //принимаем Person тк нам нужны только фио (ФИО заполняет пользователь с помощью формы)
+    //выполняем поиск и передаем список найденных пользователей
     @PostMapping()
     public String search(Model model,
                          @ModelAttribute("person") Person person) {
@@ -35,10 +45,12 @@ public class SearchController {
         return "search/search_person";
     }
 
-    @GetMapping()
-    public String search(Model model) {
-        model.addAttribute("person", new Person());
-        return "search/search_person";
+    //передаем пустые классы ОН и адреса
+    @GetMapping("/real_estate")
+    public String searchRealEstate(Model model) {
+        model.addAttribute("realEstate", new RealEstate());
+        model.addAttribute("address", new Address());
+        return "search/search_real_estate";
     }
 
     @PostMapping("/real_estate")
@@ -51,11 +63,5 @@ public class SearchController {
         return "search/search_real_estate";
     }
 
-    @GetMapping("/real_estate")
-    public String searchRealEstate(Model model) {
-        model.addAttribute("realEstate", new RealEstate());
-        model.addAttribute("address", new Address());
-        return "search/search_real_estate";
-    }
 
 }

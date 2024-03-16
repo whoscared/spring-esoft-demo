@@ -4,6 +4,7 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import whoscared.esoftdemo.esoft.demo.utils.annotation.Phone;
 
+//реализация проверки телефонного номера на корректность
 public class PhoneConstraintValidator implements ConstraintValidator<Phone, String> {
 
     @Override

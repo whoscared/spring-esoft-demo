@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import whoscared.esoftdemo.esoft.demo.models.Deal;
 import whoscared.esoftdemo.esoft.demo.models.DeductionsAndCommissions;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 import whoscared.esoftdemo.esoft.demo.services.DealService;
 import whoscared.esoftdemo.esoft.demo.services.DemandService;
 import whoscared.esoftdemo.esoft.demo.services.OfferService;
@@ -29,12 +29,14 @@ public class DealController {
         this.demandService = demandService;
     }
 
+    //главная страница
     @GetMapping()
     public String allDeals(Model model) {
         model.addAttribute("dealList", dealService.findAll());
         return "deal/deal_main";
     }
 
+    //создание новой сделки
     @GetMapping("/new")
     public String newDeal(Model model) {
         model.addAttribute("deal", new Deal());
@@ -43,6 +45,7 @@ public class DealController {
         return "deal/deal_new";
     }
 
+    //получаем новую сделку из представления и сохраняем
     @PostMapping()
     public String saveDeal(@ModelAttribute(name = "deal") Deal deal) {
         dealService.save(deal);
@@ -50,6 +53,7 @@ public class DealController {
 
     }
 
+    //страница для конкретной сделки
     @GetMapping("/{id}")
     public String currentDeal(@PathVariable("id") Long id, Model model) {
         Deal currentDeal = dealService.findById(id);
@@ -58,10 +62,12 @@ public class DealController {
         return "deal/deal_id";
     }
 
+    //страница для поиска
     @GetMapping("/search")
     public String search(Model model) {
         model.addAttribute("deal", new Deal());
         model.addAttribute("demand", new Demand());
+        //используем метод из сервиса - поиск потребностей, которые не участвуют в сделке
         model.addAttribute("demandList", demandService.findWithoutDeal());
         model.addAttribute("search", false);
         return "deal/deal_search";
@@ -70,8 +76,8 @@ public class DealController {
     @PostMapping("/search")
     public String searchByDemand(@ModelAttribute(name = "deal") Deal deal,
                                  Model model) {
-        //Deal temp_deal = new Deal();
-        //temp_deal.setDemand(demandService.findById(demand.getId()));
+
+        // метод сервиса предложений для поиска по потребностям
         List<Offer> goodOffer = offerService.findByDemand(deal.getDemand());
         model.addAttribute("offerList", goodOffer);
         model.addAttribute("search", true);

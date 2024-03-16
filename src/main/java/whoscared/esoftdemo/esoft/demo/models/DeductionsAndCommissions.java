@@ -22,29 +22,32 @@ public class DeductionsAndCommissions {
 
         priceForCustomer = (priceRealEstate * 0.03);
 
+        //комиссия для риелтора предложения
         commissionForRealtorSalesman = priceForSalesman * deal.getOffer().getRealtor().getShareOfCommission() * 0.01;
+        //комиссия для риелтора потребности
         commissionForRealtorCustomer = priceForCustomer * deal.getDemand().getRealtor().getShareOfCommission() * 0.01;
 
+        //из суммы покупателя и продавца вычитаем комиссию риелторов и получаем отчисление для компании
         deductionsCompany = (priceForSalesman - commissionForRealtorSalesman) + (priceForCustomer - commissionForRealtorCustomer);
     }
 
-    public double getPriceForSalesman() {
-        return priceForSalesman;
+    public String getPriceForSalesman() {
+        return String.format("%.2f", priceForSalesman);
     }
 
-    public double getPriceForCustomer() {
-        return priceForCustomer;
+    public String getPriceForCustomer() {
+        return String.format("%.2f", priceForCustomer);
     }
 
-    public double getCommissionForRealtorSalesman() {
-        return commissionForRealtorSalesman;
+    public String getCommissionForRealtorSalesman() {
+        return String.format("%.2f", commissionForRealtorSalesman);
     }
 
-    public double getCommissionForRealtorCustomer() {
-        return commissionForRealtorCustomer;
+    public String getCommissionForRealtorCustomer() {
+        return String.format("%.2f", commissionForRealtorCustomer);
     }
 
-    public double getDeductionsCompany() {
-        return deductionsCompany;
+    public String getDeductionsCompany() {
+        return String.format("%.2f", deductionsCompany);
     }
 }

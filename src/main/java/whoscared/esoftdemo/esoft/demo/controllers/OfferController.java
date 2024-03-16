@@ -1,6 +1,5 @@
 package whoscared.esoftdemo.esoft.demo.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 import whoscared.esoftdemo.esoft.demo.services.ClientService;
 import whoscared.esoftdemo.esoft.demo.services.OfferService;
 import whoscared.esoftdemo.esoft.demo.services.RealEstateService;
@@ -32,12 +31,14 @@ public class OfferController {
         this.offerService = offerService;
     }
 
+    //главная страница со списком всех предложений
     @GetMapping("/main")
     public String main(Model model) {
         model.addAttribute("offerList", offerService.findAll());
         return "offer/offer_main";
     }
 
+    //страница для создания нового предложения
     @GetMapping("/new")
     public String newOffer(Model model) {
         model.addAttribute("offer", new Offer());
@@ -48,6 +49,7 @@ public class OfferController {
         return "offer/offer_new";
     }
 
+    //сохранение новго предложения в бд
     @PostMapping()
     public String saveOffer(@ModelAttribute("offer") Offer offer) {
         System.out.println("привет");

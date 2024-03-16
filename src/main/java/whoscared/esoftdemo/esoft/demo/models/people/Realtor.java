@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 
 import java.util.List;
 
@@ -44,6 +44,8 @@ public class Realtor extends Person {
 
     @OneToMany(mappedBy = "realtor")
     private List<Demand> demand;
+
+    public Realtor(){}
 
     public long getId() {
         return id;

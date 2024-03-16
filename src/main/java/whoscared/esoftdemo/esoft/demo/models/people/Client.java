@@ -1,12 +1,10 @@
 package whoscared.esoftdemo.esoft.demo.models.people;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 import whoscared.esoftdemo.esoft.demo.utils.annotation.Phone;
 
 import java.util.List;
@@ -32,6 +30,7 @@ public class Client extends Person {
     @Column(name = "patronymic")
     private String patronymic;
 
+    //реализация валидации phone
     @Phone(message = "Phone number entered incorrectly")
     @Column(name = "phone")
     private String phone;
@@ -40,11 +39,14 @@ public class Client extends Person {
     @Column(name = "email")
     private String email;
 
+    //у клиента может быть несколько предложений или требований
     @OneToMany(mappedBy = "client")
     private List<Offer> offer;
 
     @OneToMany(mappedBy = "client")
     private List<Demand> demand;
+
+    public Client(){}
 
     public List<Demand> getDemand() {
         return demand;

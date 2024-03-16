@@ -2,10 +2,8 @@ package whoscared.esoftdemo.esoft.demo.models.immovables;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import whoscared.esoftdemo.esoft.demo.models.Address;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 
 @Entity
 @Table(name = "real_estate")
@@ -16,10 +14,12 @@ public class RealEstate {
     @Column(name = "id")
     private long id;
 
+    //указывает на тип ОН
     @Column(name = "type_of_real_estate")
     @Enumerated(EnumType.STRING)
     private TypeOfRealEstate typeOfRealEstate;
 
+    //отдельный класс для адреса
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;

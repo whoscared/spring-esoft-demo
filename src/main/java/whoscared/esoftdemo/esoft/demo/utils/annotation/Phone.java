@@ -6,6 +6,7 @@ import whoscared.esoftdemo.esoft.demo.utils.validator.PhoneConstraintValidator;
 
 import java.lang.annotation.*;
 
+//реализация аннотации @Phone
 @Documented
 @Constraint(validatedBy = PhoneConstraintValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})

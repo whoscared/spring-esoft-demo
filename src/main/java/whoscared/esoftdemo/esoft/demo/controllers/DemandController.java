@@ -36,6 +36,7 @@ public class DemandController {
         this.realtorService = realtorService;
     }
 
+    //главная страница, на которой список всех потребностей
     @GetMapping()
     public String mainDemand(Model model) {
         demandService.findAll();
@@ -43,8 +44,10 @@ public class DemandController {
         return "demand/demand_main";
     }
 
+    //страница для создания новой потребности
     @GetMapping("/new")
     public String newDemand(Model model) {
+        //передаем листы для выпадающего списка
         model.addAttribute("clientList", clientService.allClients());
         model.addAttribute("realtorList", realtorService.allRealtors());
         model.addAttribute("demand", new Demand());
@@ -52,6 +55,7 @@ public class DemandController {
         return "demand/demand_new";
     }
 
+    //сохранение потребности
     @PostMapping()
     public String saveDemand(@ModelAttribute(value = "demand") @Valid Demand demand,
                              BindingResult bindingResultDemand,
@@ -61,9 +65,11 @@ public class DemandController {
         if (bindingResultDemand.hasErrors() || bindingResultAddress.hasErrors()) {
             return "demand/demand_new";
         }
+        //добавляем сначала сущность "адрес" в бд только потом сущность "потребность"
+        //так как потребность ссылается на id адреса
         addressService.save(address);
         demand.setAddress(address);
         demandService.save(demand);
-        return "redirect:/";
+        return "redirect:/demand";
     }
 }

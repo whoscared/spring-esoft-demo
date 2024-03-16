@@ -12,6 +12,7 @@ import whoscared.esoftdemo.esoft.demo.services.DealService;
 import whoscared.esoftdemo.esoft.demo.utils.validator.ClientValidator;
 
 @Controller
+//начало url для всех методов данного контроллера
 @RequestMapping("/client")
 public class ClientController {
     private final ClientService clientService;
@@ -25,18 +26,23 @@ public class ClientController {
         this.dealService = dealService;
     }
 
+    //главная страница - список клиентов
     @GetMapping("/main")
     public String allClients(Model model) {
         model.addAttribute("clients", clientService.allClients());
         return "client/client_main";
     }
 
+    //создание нового клиента
     @GetMapping("/new")
     public String newClient(Model model) {
         model.addAttribute("client", new Client());
         return "client/client_new";
     }
 
+    //получаем данные с представления о новом клиенте
+    //аннотация @Valid для валидации данных с формы
+    //если данные некорректны возвращаем страницу с ошибками
     @PostMapping()
     public String addNewClient(@ModelAttribute("client") @Valid Client client,
                                BindingResult bindingResult,
@@ -50,18 +56,23 @@ public class ClientController {
         return "redirect:/client/main";
     }
 
+    //страница для каждого из клиентов
     @GetMapping("/{id}")
     public String oneClient(@PathVariable("id") long id,
                             Model model) {
         Client current = clientService.findById(id);
         model.addAttribute("client", current);
+        //список предложений
         model.addAttribute("offers", current.getOffer());
+        // список потребностей
         model.addAttribute("demands", current.getDemand());
+        // список сделок
         model.addAttribute("deals", dealService.findByClientId(id));
 
         return "client/client_id";
     }
 
+    //страница для редактирования клиентов (аналогично созданию нового клиента )
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id,
                        Model model) {
@@ -89,6 +100,7 @@ public class ClientController {
         return "client/client_id";
     }
 
+    //нельзя удалить клиента, у которого имеются предложения или потребности
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") long id,
                          Model model) {

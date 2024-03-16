@@ -41,13 +41,6 @@ public class RealtorController {
         return "redirect:/realtor/main";
     }
 
-//    @GetMapping("/{id}")
-//    public String oneRealtor(@PathVariable("id") long id,
-//                             Model model) {
-//        model.addAttribute("realtor", realtorService.findById(id));
-//        return "realtor/realtor_id";
-//    }
-
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") long id,
                        Model model) {

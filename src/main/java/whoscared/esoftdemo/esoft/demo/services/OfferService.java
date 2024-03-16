@@ -3,8 +3,7 @@ package whoscared.esoftdemo.esoft.demo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import whoscared.esoftdemo.esoft.demo.models.Demand;
-import whoscared.esoftdemo.esoft.demo.models.immovables.RealEstate;
-import whoscared.esoftdemo.esoft.demo.models.offer.Offer;
+import whoscared.esoftdemo.esoft.demo.models.Offer;
 import whoscared.esoftdemo.esoft.demo.models.people.Client;
 import whoscared.esoftdemo.esoft.demo.models.people.Realtor;
 import whoscared.esoftdemo.esoft.demo.repositories.OfferRepository;
@@ -42,6 +41,7 @@ public class OfferService {
         allOffer = allOffer.stream().filter(x -> x.getRealEstate().getTypeOfRealEstate() == demand.getTypeOfRealEstate()).toList();
 
         allOffer = allOffer.stream()
+                // проверяем указан ли город, если да ищем с таким же городом
                 .filter(x -> x.getRealEstate().getAddress().getCity() == null
                         || x.getRealEstate().getAddress().getCity().equals(demand.getAddress().getCity()))
                 .filter(x -> x.getRealEstate().getAddress().getStreet() == null

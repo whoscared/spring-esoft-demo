@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main")
 public class HelloController {
 
+    // для представления меню
     @GetMapping()
     public String hello() {
         return "/hello";

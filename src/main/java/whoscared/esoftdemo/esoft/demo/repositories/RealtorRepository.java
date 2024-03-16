@@ -14,5 +14,4 @@ public interface RealtorRepository extends JpaRepository<Realtor, Long> {
 
     List<Realtor> findByPatronymic(String patronymic);
 
-    void deleteById(long id);
 }
