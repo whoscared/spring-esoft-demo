@@ -12,6 +12,6 @@ public class HelloController {
     // для представления меню
     @GetMapping()
     public String hello() {
-        return "/hello";
+        return "hello";
     }
 }
