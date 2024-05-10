@@ -10,7 +10,7 @@ git clone
 3. Go to the root directory of the project.
 
 ```bash
-cd <org/example/whoscared>
+cd <spring-esoft-demo>
 ```
 
 4. Build the project using Maven.
