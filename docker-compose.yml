@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - ./infrastructure/db/001-create-table-client.sql:/docker-entrypoint-initdb.d/001-create-table-client.sql
+      - ./infrastructure/db/002-create-table-realtor.sql:/docker-entrypoint-initdb.d/002-create-table-realtor.sql
+      - ./infrastructure/db/003-create-table-address.sql:/docker-entrypoint-initdb.d/003-create-table-address.sql
+      - ./infrastructure/db/004-create-table-real_estate.sql:/docker-entrypoint-initdb.d/004-create-table-real_estate.sql
+      - ./infrastructure/db/005-create-table-offer.sql:/docker-entrypoint-initdb.d/005-create-table-offer.sql
+      - ./infrastructure/db/006-create-table-demand.sql:/docker-entrypoint-initdb.d/006-create-table-demand.sql
+      - ./infrastructure/db/007-create-table-deal.sql:/docker-entrypoint-initdb.d/007-create-table-deal.sql
+
+
+
